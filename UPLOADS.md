@@ -1,1 +1,0 @@
-Genomic sequences published through index.html are locally stored here.

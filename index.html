@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+  <head>
+    <title>File Upload</title>
+  </head>
+  <body>
+    <h1>popPUNK</h1>
+    <form method="POST" action="" enctype="multipart/form-data">
+      <p><input type="file" name="file"></p>
+      <p><input name="easy" type="checkbox" value="default" /> Use default parameters</p>
+      <label for="name">Minimum K-mer length:</label><br /><input name="min_k" type="text" value="13" /><br />
+      <label for="name">Maximum K-mer length:</label><br /><input name="max_k" type="text" value="29" /><br />
+      <label for="name">K-mer step size:</label><br /><input name="k_step" type="text" value="4" /><br />
+      <label for="name">K-mer sketch size:</label><br /><input name="sketch_sizes" type="text" value="10000" /><br />
+      <label for="name">Minimum k-mer count when using reads as input:</label><br /><input name="min_count" type="text" value="0" /><br />
+      <label for="name">Maximum accessory distance to permit:</label><br /><input name="max_a_dist" type="text" value="0.5" /><br />
+      <p><input name="core_only" type="hidden" value=False />
+      <input name="core_only" type="checkbox" value=True />Core only<br />
+      <input name="accessory_only" type="hidden" value=False />
+      <input name="accessory_only" type="checkbox" value=True />Accessory only<br />
+      <input name="use_accessory" type="hidden" value=False />
+      <input name="use_accessory" type="checkbox" value=True />Use accessory distances for lineage definitions [default = use core distances]<br />
+      <input name="use_exact" type="hidden" value=False />
+      <input name="use_exact" type="checkbox" value=True />Use the exact k-mer counter with reads</p>
+      <p><input type="submit" value="Submit"></p>
+    </form>
+  </body>
+</html>

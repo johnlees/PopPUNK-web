@@ -16,9 +16,6 @@ def index():
 
     if request.method == 'POST':
         uploaded_file = request.files['file']
-        isolate_name = uploaded_file.read().decode("utf-8").split("\n")[0].replace('>', '')
-
-        uploaded_file = request.files['file']
         uploaded_file.save(os.path.join('uploads', secure_filename(uploaded_file.filename)))
         return render_template('sketch.html')
     else:

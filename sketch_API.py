@@ -16,8 +16,8 @@ def index():
 
     if request.method == 'POST':
         uploaded_file = request.files['file']
-        uploaded_file.save(os.path.join('uploads', secure_filename(uploaded_file.filename)))
-        return render_template('sketch.html')
+        uploaded_file.save(os.path.join('uploads', "query.fa"))
+        return render_template('sketch_2.html')
     else:
         return render_template('uploader.html')
 

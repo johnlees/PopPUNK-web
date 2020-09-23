@@ -1,3 +1,5 @@
+//Allow .wasm to be read and run in an html script
+
 let wasmExports = null;
 
 let wasmMemory = new WebAssembly.Memory({initial: 256, maximum: 256})

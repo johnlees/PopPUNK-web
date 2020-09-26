@@ -21,5 +21,9 @@ def index():
     else:
         return render_template('uploader.html')
 
+@app.route('/pp-sketch.data', methods=['GET'])
+def data():
+    return render_template('data.html')
+   
 if __name__=="__main__":
     app.run(debug=True)

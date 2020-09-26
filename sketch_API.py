@@ -17,7 +17,7 @@ def index():
     if request.method == 'POST':
         uploaded_file = request.files['file']
         uploaded_file.save(os.path.join('uploads', "query.fa"))
-        return render_template('sketch_2.html')
+        return render_template('pp-sketch.html')
     else:
         return render_template('uploader.html')
 

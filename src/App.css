@@ -1,0 +1,47 @@
+App {
+  max-width: 960px;
+  margin: 10px auto;
+}
+
+.text-center {
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+}
+
+/* Dropzone */
+.dropzone {
+  padding: 30px;
+  height: 30vh;
+  border: 5px dashed #6495ED;
+  outline: none;
+  cursor: pointer;
+}
+.dropzone-active {
+  background-color: #F5F5F5;
+  border: 5px solid #1E90FF;
+}
+.dropzone-content {
+  align-self: center;
+  font-size: 24px;
+}
+
+/* Loader */
+.loader {
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+}
+
+/* Results */
+.display-cluster {
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+}

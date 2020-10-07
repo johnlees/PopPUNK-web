@@ -1,35 +1,43 @@
-//import Sketch from './web_sketch.js';
+import { Module } from './web_sketch.js';
 
+addEventListener('message', event => {
+  const f = event.data[0];
+  console.log('Sequence recieved!');
+  console.log(f)
+
+
+  var fs = require('browserify-fs');
+  fs.mkdir('/working');
+  fs.writeFile('/working', { files: [f] })
+  fs.mount(fs.filesystems.WORKERFS, { files: [f] }, '/working');
+
+  const sketch_mod = Module();
+
+  console.log('sketch result: ' + sketch_mod.sketch('/working/' + f.name, 15, 27, 2, 14, 156, false, true));
+
+  const clusterPost = '3'
+  this.postMessage(clusterPost);
+});
+
+/*
 export default () => {
-  
   onmessage = function(e) {
     const f = e.data[0];
-
-    function sleep(milliseconds) {
-      const date = Date.now();
-      let currentDate = null;
-      do {
-        currentDate = Date.now();
-      } while (currentDate - date < milliseconds);
-    }
-
-    //var fs = require('browserify-fs');
-    //fs.mkdir('/working');
-    //fs.writeFile('/working', { files: [f] })
-    //fs.mount(WORKERFS, { files: [f] }, '/working');
-
-    //Sketch('/working/' + f.name, 15, 27, 2, 14, 156, false, true);
-
-    
-    //console.log('sketch result: ' + module.sketch('/working/' + f.name, 15, 27, 2, 14, 156, false, true));
     console.log('Sequence recieved!');
-    sleep(3000);
     console.log(f)
-    console.log("Delay complete!");
+
+
+    var fs = require('browserify-fs');
+    fs.mkdir('/working');
+    fs.writeFile('/working', { files: [f] })
+    fs.mount(fs.filesystems.WORKERFS, { files: [f] }, '/working');
+
+    const sketch_mod = Module();
+
+    console.log('sketch result: ' + sketch_mod.sketch('/working/' + f.name, 15, 27, 2, 14, 156, false, true));
 
     const clusterPost = '3'
     this.postMessage(clusterPost)
   }
-  
-  //this.importScripts('web_sketch.js');
 };
+*/

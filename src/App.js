@@ -1,8 +1,8 @@
 import React, { useCallback, useEffect, useState } from "react";
 import './App.css';
 //import launchWorker from './launchWorker'
-import WebWorker from './components/setup';
-import worker from './components/test.worker';
+//import WebWorker from './components/setup';
+//import worker from './components/test.worker';
 import DropZone from './components/DropZone';
 import Loading from './components/Loading'
 import ClusterResult from './components/clusterResult'
@@ -11,12 +11,16 @@ function App() {
   const [loading, setLoading] = useState(false) //define loading state
   const [display, setCluster] = useState(null) //define result state
 
-  let sketchWork = new WebWorker(worker);  // Declare worker
+  const blob = new Blob(['./test.worker.js'], { type: "text/javascript" });
+  const sketchWork = new Worker(URL.createObjectURL(blob), { type: 'module'});
   // Constants declaration
   const onDrop = useCallback(acceptedFiles => {
       setLoading(true)
       console.log(loading);
       sketchWork.postMessage(acceptedFiles);
+      sketchWork.onmessage = event => {
+        console.log('pi: ' + event.data);
+      };
       console.log("Sequence posted!");
     }, [sketchWork, setLoading]);
 
@@ -27,7 +31,7 @@ function App() {
       setLoading(false)
       setCluster(event.data)
     });
-  }, [sketchWork, setLoading, setCluster]); 
+  }, [sketchWork, setLoading, setCluster]);
 
   return (
     <main className="App">

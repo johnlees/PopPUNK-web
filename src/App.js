@@ -17,7 +17,7 @@ function App() {
       console.log(loading);
       sketchWork.postMessage(acceptedFiles);
       console.log("Sequence posted!");
-    }, [sketchWork, setLoading]);
+    }, [sketchWork, setLoading]); //Submit sequence to webworker for sketching
 
   useEffect(() => {
     sketchWork.addEventListener("message", event => {
@@ -44,10 +44,11 @@ function App() {
       }).then((response) => response.json()).then((responseJson) => {
         console.log(responseJson);
         setCluster(responseJson);
-      }) // Post sketch to "/upload" and recieve cluster ID in response
-      setLoading(false)
+        setLoading(false);
+        console.log("Flask delay complete!")
+      })
     });
-  }, [sketchWork, setLoading, setCluster]); 
+  }, [sketchWork, setLoading, setCluster]); //Recieve sketch, post to Flask and recieve response from Flask
 
   return (
     <main className="App">

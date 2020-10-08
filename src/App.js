@@ -24,13 +24,11 @@ function App() {
       console.log("WebWorker works!");
       console.log('Sketch: ' + event.data);
 
-      var data = new FormData();
       const payload = {
           bbits: "14",
           sketchsize64: "156",
           kmers: "14"
       };
-      data.append("jsonsketch", JSON.stringify(payload));
       
       console.log('Posting sketch to Flask!');
       fetch("http://localhost:5000/upload", {

@@ -1,9 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 import './App.css';
-//import launchWorker from './launchWorker'
 import WebWorker from './components/setup';
 import worker from './components/test.worker';
-//import worker from './components/flaskComponent';
 import DropZone from './components/DropZone';
 import Loading from './components/Loading'
 import ClusterResult from './components/clusterResult'
@@ -46,7 +44,7 @@ function App() {
       }).then((response) => response.json()).then((responseJson) => {
         console.log(responseJson);
         setCluster(responseJson);
-      })
+      }) // Post sketch to "/upload" and recieve cluster ID in response
       setLoading(false)
     });
   }, [sketchWork, setLoading, setCluster]); 

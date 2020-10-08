@@ -1,4 +1,4 @@
-//import Sketch from './web_sketch.js';
+import React from 'react';
 
 export default () => {
   
@@ -11,7 +11,7 @@ export default () => {
       do {
         currentDate = Date.now();
       } while (currentDate - date < milliseconds);
-    }
+    };
 
     //var fs = require('browserify-fs');
     //fs.mkdir('/working');
@@ -22,14 +22,13 @@ export default () => {
 
     
     //console.log('sketch result: ' + module.sketch('/working/' + f.name, 15, 27, 2, 14, 156, false, true));
-    console.log('Sequence recieved!');
-    sleep(3000);
-    console.log(f)
+    sleep(1000);
+    console.log(f);
     console.log("Delay complete!");
 
-    const clusterPost = '3'
-    this.postMessage(clusterPost)
-  }
+    const clusterPost = 'ignore me';
+    this.postMessage(clusterPost);
+  };
   
   //this.importScripts('web_sketch.js');
 };

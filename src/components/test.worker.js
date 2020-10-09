@@ -1,17 +1,13 @@
-import React from 'react';
+export const sketchWorker = (e) => {
+  const f = e.data;
 
-export default () => {
-  
-  onmessage = function(e) {
-    const f = e.data[0];
-
-    function sleep(milliseconds) {
-      const date = Date.now();
-      let currentDate = null;
-      do {
-        currentDate = Date.now();
-      } while (currentDate - date < milliseconds);
-    };
+  function sleep(milliseconds) {
+    const date = Date.now();
+    let currentDate = null;
+    do {
+      currentDate = Date.now();
+    } while (currentDate - date < milliseconds);
+  };
 
     //var fs = require('browserify-fs');
     //fs.mkdir('/working');
@@ -22,13 +18,11 @@ export default () => {
 
     
     //console.log('sketch result: ' + module.sketch('/working/' + f.name, 15, 27, 2, 14, 156, false, true));
-    sleep(1000);
-    console.log(f);
-    console.log("Delay complete!");
+    //sleep(2000);
+    //console.log("Webworker delay complete!");
 
-    const clusterPost = 'ignore me';
-    this.postMessage(clusterPost);
-  };
+  const clusterPost = 'Worker-loader worker works!';
+  postMessage(clusterPost);
+};
   
   //this.importScripts('web_sketch.js');
-};

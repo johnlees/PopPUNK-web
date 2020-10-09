@@ -3,6 +3,7 @@ import './App.css';
 //import launchWorker from './launchWorker'
 //import WebWorker from './components/setup';
 //import worker from './components/test.worker';
+// import worker from 'workerize-loader!./test.worker'; // eslint-disable-line import/no-webpack-loader-syntax
 import DropZone from './components/DropZone';
 import Loading from './components/Loading'
 import ClusterResult from './components/clusterResult'
@@ -11,26 +12,25 @@ function App() {
   const [loading, setLoading] = useState(false) //define loading state
   const [display, setCluster] = useState(null) //define result state
 
-  const blob = new Blob(['./test.worker.js'], { type: "text/javascript" });
-  const sketchWork = new Worker(URL.createObjectURL(blob), { type: 'module'});
+  const sketchWork = require( "workerize-loader!./components/testWorker"); // eslint-disable-line import/no-webpack-loader-syntax
+  //const blob = new Blob(['./test.worker.js'], { type: "text/javascript" });
+  //const sketchWork = new Worker(URL.createObjectURL(blob), { type: 'module'});
   // Constants declaration
   const onDrop = useCallback(acceptedFiles => {
       setLoading(true)
       console.log(loading);
       sketchWork.postMessage(acceptedFiles);
-      sketchWork.onmessage = event => {
-        console.log('pi: ' + event.data);
-      };
       console.log("Sequence posted!");
     }, [sketchWork, setLoading]);
 
   useEffect(() => {
-    sketchWork.addEventListener("message", event => {
+    sketchWork.sketch().then( cluster => {
       console.log("WebWorker works!");
-      console.log('Cluster: ' + event.data);
+      console.log('Cluster: ' + cluster);
       setLoading(false)
-      setCluster(event.data)
-    });
+      setCluster(cluster)
+  })
+
   }, [sketchWork, setLoading, setCluster]);
 
   return (

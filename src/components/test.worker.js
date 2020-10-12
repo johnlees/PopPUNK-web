@@ -18,7 +18,7 @@ export const sketchWorker = (e) => {
 
     
     //console.log('sketch result: ' + module.sketch('/working/' + f.name, 15, 27, 2, 14, 156, false, true));
-    //sleep(2000);
+  sleep(2000);
     //console.log("Webworker delay complete!");
 
   const clusterPost = 'Worker-loader worker works!';

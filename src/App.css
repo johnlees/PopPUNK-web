@@ -37,6 +37,11 @@ App {
   text-align: center;
 }
 
+.progress-text{
+  position: relative;
+  text-align: center;
+}
+
 /* Results */
 .display-cluster {
   display: flex;

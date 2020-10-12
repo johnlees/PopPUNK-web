@@ -10,52 +10,56 @@ import worker from 'workerize-loader!./components/test.worker'; // eslint-disabl
 
 function App() {
   const [loading, setLoading] = useState(false) //define loading state
+  const [progress, setStage] = useState("Sketching...") //define result state
   const [sketch, setSketch] = useState(null) //define sketch state
   const [display, setCluster] = useState(null) //define result state
 
+  
   const onDrop = useCallback(acceptedFiles => {
-    setLoading(true)
+    
     const workerInstance = worker();
+    setLoading(true)
     //Spawn worker, post file and retrieve response  
     workerInstance.sketchWorker(acceptedFiles); //call submit to webworker
     //Submit sequence to webworker for sketching
 
     workerInstance.addEventListener('message', (message) => {
-      console.log("WebWorker works!");
-      console.log('Sketch: ' + message.data);
-      setSketch(message.data);
+      if ( typeof message.data === 'string' ) {
+        setSketch(message.data);
+        setStage("Assigning lineage...")
 
-      const payload = {
-        bbits: "14",
-        sketchsize64: "156",
-        kmers: "14"
-        };
-      
-      console.log('Posting sketch to Flask!');
-      fetch("http://localhost:5000/upload", {
-        method: 'POST',
-        mode: 'cors',
-        headers : { 
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-         },
-        body: JSON.stringify(payload),
-        }).then((response) => response.json()).then((responseJson) => {
-      console.log(responseJson);
-      setCluster(responseJson);
-      setLoading(false);
-      console.log("Flask delay complete!");
-      });
-    });
-  }, [setLoading, setSketch, setCluster]); //Recieve sketch, post to Flask and recieve response from Flask
+        const payload = {
+          bbits: "14",
+          sketchsize64: "156",
+          kmers: "14"
+          };
+        
+        console.log('Posting sketch to Flask!');
+        fetch("http://localhost:5000/upload", {
+          method: 'POST',
+          mode: 'cors',
+          headers : { 
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(payload),
+          }).then((response) => response.json()).then((responseJson) => {
+        console.log(responseJson);
+        setCluster(responseJson);
+        setLoading(false);
+        console.log("Flask delay complete!");
+        });
+      };
+  });
+}, [setLoading, setStage, setSketch, setCluster]); //Recieve sketch, post to Flask and recieve response from Flask
 
   return (
     <main className="App">
       <h1 className="text-center">PopPUNK-web Sequence Sketching</h1>
         <div >
           { (display === null &&  loading === false) && <DropZone onDrop = { onDrop } /> }
-          { (display === null &&  loading === true) &&  <Loading /> }
-          { display && <ClusterResult display={ display }/> }
+          { (display === null &&  loading === true) &&  <Loading progress = { progress }/> }
+          { display && <ClusterResult display = { display }/> }
         </div>
     </main>
   );

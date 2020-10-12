@@ -8,13 +8,13 @@ import ClusterResult from './components/clusterResult'
 import worker from 'workerize-loader!./components/test.worker'; // eslint-disable-line import/no-webpack-loader-syntax
 
 
+
 function App() {
   const [loading, setLoading] = useState(false) //define loading state
   const [progress, setStage] = useState("Sketching...") //define result state
   const [sketch, setSketch] = useState(null) //define sketch state
   const [display, setCluster] = useState(null) //define result state
 
-  
   const onDrop = useCallback(acceptedFiles => {
     
     const workerInstance = worker();
@@ -34,6 +34,8 @@ function App() {
           kmers: "14"
           };
         
+        setSketch(payload)
+
         console.log('Posting sketch to Flask!');
         fetch("http://localhost:5000/upload", {
           method: 'POST',
@@ -59,7 +61,7 @@ function App() {
         <div >
           { (display === null &&  loading === false) && <DropZone onDrop = { onDrop } /> }
           { (display === null &&  loading === true) &&  <Loading progress = { progress }/> }
-          { display && <ClusterResult display = { display }/> }
+          { display && <ClusterResult display = { display } sketch = { sketch }/> }
         </div>
     </main>
   );

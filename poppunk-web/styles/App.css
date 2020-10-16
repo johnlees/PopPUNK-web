@@ -1,9 +1,9 @@
-.App {
+App {
   max-width: 960px;
   margin: 10px auto;
 }
 
-.text_center {
+.text-center {
   display: flex;
   height: 100%;
   justify-content: center;

@@ -1,0 +1,81 @@
+#title-font {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 43px;
+  color: #ff8080;
+  font-weight: normal;
+  text-decoration: none;
+  font-style: normal;
+  font-variant: normal;
+  text-transform: none;
+  }
+
+#description-font {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 27px;
+  word-spacing: 1px;
+  color: #000000;
+  font-weight: normal;
+  text-decoration: none;
+  font-style: normal;
+  font-variant: normal;
+  text-transform: none;
+  }
+
+#dropzone-inactive {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 30px;
+  word-spacing: -1.2px;
+  color: #8F8F8F;
+  font-weight: normal;
+  text-decoration: none;
+  font-style: normal;
+  font-variant: normal;
+  text-transform: none;
+  }
+
+#accepted-files {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  word-spacing: -1.2px;
+  color: #8F8F8F;
+  font-weight: normal;
+  text-decoration: none;
+  font-style: normal;
+  font-variant: normal;
+  text-transform: none;
+  }
+
+#dropzone-active {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 30px;
+  word-spacing: -1.2px;
+  color: #000000;
+  font-weight: normal;
+  text-decoration: none;
+  font-style: normal;
+  font-variant: normal;
+  text-transform: none;
+  }
+
+#loader-font {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 26px;
+  color: #000000;
+  font-weight: normal;
+  text-decoration: none;
+  font-style: normal;
+  font-variant: normal;
+  text-transform: none;
+  }
+
+#footer-font {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 15px;
+  word-spacing: -1.2px;
+  color: #8F8F8F;
+  font-weight: normal;
+  text-decoration: none;
+  font-style: normal;
+  font-variant: normal;
+  text-transform: none;
+}

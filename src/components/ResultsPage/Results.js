@@ -1,6 +1,6 @@
 import React from "react";
 import Button from 'react-bootstrap/Button';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import ShowHide from './changeView'
 
 class ClusterResult extends React.Component {
 
@@ -13,14 +13,17 @@ class ClusterResult extends React.Component {
         link.href = url;
         link.click();
     };
-
+    
     render() {
         return(
         <>
-            <div className='display-cluster'>
-                <h2>Cluster ID: {this.props.display} </h2>
+            <div className="summary-statistics">
+                <h4> Species: {this.props.display.species} Cluster ID: {this.props.display.query} Prevalence: {this.props.display.prev} Other: {this.props.display.other}</h4>
+                <Button className='download-button' variant="outline-primary" onClick={ this.handleSaveToPC.bind(null, this.props.sketch) } >Download sketch</Button>
             </div>
-            <Button variant="outline-primary" onClick={ this.handleSaveToPC.bind(null, this.props.sketch) } >Download sketch</Button>
+            <div className="grid-container">
+                <ShowHide display={ this.props.display }/>
+            </div>
         </>
     )};
 };

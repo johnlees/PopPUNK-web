@@ -1,6 +1,5 @@
 import os
-from flask import Flask, flash, request, redirect, url_for, session, jsonify
-from werkzeug.utils import secure_filename
+from flask import Flask, request, jsonify
 from flask_cors import CORS, cross_origin
 import time 
 
@@ -25,7 +24,6 @@ def fileUpload():
     file.close()
     time.sleep(1) #Simulate running process 
     response =  '{"species":"Influenza", "prev":"30%", "query":5, "clusters":[1, 2, 3, 4, 5, 6, 7, 8, 9, 10], "prevalences":[1, 5, 10, 40, 30, 7, 3, 3, 1, 0]}'
-    #response =  '{"first_name":"billy", "age":23}'
     return jsonify(response)
 
 if __name__ == "__main__":

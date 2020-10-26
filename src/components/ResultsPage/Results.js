@@ -21,12 +21,9 @@ class ClusterResult extends React.Component {
                 <h4> Species: {this.props.display.species} Cluster ID: {this.props.display.query} Prevalence: {this.props.display.prev} Other: {this.props.display.other}</h4>
                 <Button className='download-button' variant="outline-primary" onClick={ this.handleSaveToPC.bind(null, this.props.sketch) } >Download sketch</Button>
             </div>
-            <div className="grid-container">
-                <ShowHide display={ this.props.display }/>
-            </div>
+            <ShowHide display={ this.props.display }/>
         </>
     )};
 };
 
 export default ClusterResult;
-

@@ -4,11 +4,6 @@ import './CSS/styles/index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-//let Module = require('./web_sketch.js');
-//let sketch = Module().cwrap('Sketch');
-//module.exports = sketch;
-
-
 ReactDOM.render(
   <React.StrictMode>
     <App />

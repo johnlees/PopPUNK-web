@@ -1,1 +1,0 @@
-{'bbits': '14', 'sketchsize64': '156', 'kmers': '14'}

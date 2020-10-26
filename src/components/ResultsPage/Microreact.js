@@ -27,9 +27,7 @@ function Tree() {
     console.log("Microreact complete!");
     });
     return(
-        <div> 
-            <object className="toggled-results" classNametype="text/html" data="https://microreact.org/project/cogconsortium-2020-10-21/e6a88c91/" />
-        </div>
+        <object style= {{ width: '100%', height: '100%' }} classNametype="text/html" data="https://microreact.org/project/cogconsortium-2020-10-21/e6a88c91/" />
     );
 };
 

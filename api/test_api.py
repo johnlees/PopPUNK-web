@@ -19,10 +19,7 @@ def fileUpload():
     if not os.path.isdir(UPLOAD_FOLDER):
         os.mkdir(UPLOAD_FOLDER)
     sketch = request.json
-    file = open('uploads/out.txt', 'w')
-    file.write(str(sketch))
-    file.close()
-    time.sleep(1) #Simulate running process 
+    time.sleep(3) #Simulate running process 
     response =  '{"species":"Influenza", "prev":"30%", "query":5, "clusters":[1, 2, 3, 4, 5, 6, 7, 8, 9, 10], "prevalences":[1, 5, 10, 40, 30, 7, 3, 3, 1, 0]}'
     return jsonify(response)
 

@@ -14,16 +14,19 @@ import './CSS/styles/ResultsPage.css';
 import './CSS/Fonts.css';
 
 function App() {
-  const [loading, setLoading] = useState(false) //define loading state
-  const [progress, setStage] = useState("Sketching...") //define result state
-  const [sketch, setSketch] = useState(null) //define sketch state
-  const [display, setCluster] = useState(null) //define result state
+
+  const [loading, setLoading] = useState(false); //define loading state
+  const [progress, setStage] = useState("Sketching..."); //define result state
+  const [sketch, setSketch] = useState(null); //define sketch state
+  const [display, setCluster] = useState(null); //define result state
 
   const onDrop = useCallback(acceptedFiles => {
-
-    console.log(acceptedFiles);
   
-    setStage("Assigning lineage...")
+    window.Worker.postMessage(acceptedFiles);
+   
+    console.log(acceptedFiles);
+    setLoading(true);
+    setStage("Assigning lineage...");
 
     const payload = {
       bbits: "14",

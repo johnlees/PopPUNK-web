@@ -12,6 +12,9 @@ class Plots extends React.Component{
                             {type: 'bar', x: this.props.display.clusters, y: this.props.display.prevalences, marker: {color: ['blue', 'blue', 'blue', 'blue', 'rgb(255,128,128)', 'blue', 'blue', 'blue', 'blue']}},
                         ]}
                         layout={ {
+                            xaxis: {
+                                title: "Cluster ID",
+                            },
                             yaxis: {
                                 title: "Prevalence (%)",
                             },

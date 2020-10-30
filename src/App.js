@@ -41,6 +41,7 @@ function App() {
         },
         body: JSON.stringify(sketch),
         }).then((response) => response.json()).then((responseJson) => {
+      //const result = JSON.parse(responseJson);
       const result = JSON.parse(responseJson);
       console.log(result);
       setCluster(result);

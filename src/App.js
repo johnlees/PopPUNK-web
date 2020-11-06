@@ -3,9 +3,13 @@ import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import DropZone from './components/LandingPage/DropZone';
-import Logo from './components/LandingPage/logo.png';
 import Loading from './components/LoadingPage/Loading'
 import ClusterResult from './components/ResultsPage/Results'
+
+import PopPUNKLogo from './components/LandingPage/PopPUNKLogo.png';
+import MFLogo from './components/LandingPage/MFLogo.png';
+import WellcomeLogo from './components/LandingPage/WellcomeLogo.png';
+import MRCLogo from './components/LandingPage/MRCLogo.png';
 
 import './CSS/styles/App.css';
 import './CSS/styles/LandingPage.css';
@@ -41,7 +45,6 @@ function App() {
         },
         body: JSON.stringify(sketch),
         }).then((response) => response.json()).then((responseJson) => {
-      //const result = JSON.parse(responseJson);
       const result = JSON.parse(responseJson);
       console.log(result);
       setCluster(result);
@@ -55,7 +58,7 @@ return (
     <main className='App'>
       <>
         <div className="flexbox-container">
-          <img className='logo' src={Logo} alt="PopPUNK logo"/>
+          <img className='logo' src={PopPUNKLogo} alt="PopPUNK logo"/>
           <div id="title-font" className="title">Influenza & SARS-CoV-2</div>
           <Button style={{ marginLeft: "auto" }} href="https://poppunk.net/" variant="link">Return to PopPUNK homepage</Button>
         </div>
@@ -70,6 +73,14 @@ return (
                 <a> | </a>
                 <a className="link" href="https://github.com/johnlees/PopPUNK/issues">Report issues</a>
               </ul>
+            </div>
+          </div>
+          <div className="funder-container">
+            <div id="funder-font" className="funder-logos">
+              <a>Gratefully funded by:</a>
+              <img className="MF-logo" src={MFLogo} alt="PopPUNK logo"/>
+              <img className="Wellcome-logo" src={WellcomeLogo} alt="PopPUNK logo"/>
+              <img className="MRC-logo" src={MRCLogo} alt="PopPUNK logo"/>
             </div>
           </div>
         </div>

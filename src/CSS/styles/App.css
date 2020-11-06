@@ -1,6 +1,5 @@
 App {
   max-width: 10000px;
-  margin: 10px;
   max-height: 10000px;
 }
 
@@ -11,7 +10,7 @@ App {
 }
 
 .content-container {
-  height: 800px;
+  height: 700px;
 }
 
 .flexbox-container {
@@ -48,5 +47,46 @@ App {
   bottom: 1%
 }
 
-.link { color: #8F8F8F; } /* CSS link color (red) */
-.link:hover { color: #000000; } /* CSS link hover (green) */
+.link { color: #8F8F8F; }
+.link:hover { color: #000000; }
+
+.funder-container {
+  display: flex;
+  flex-direction: inline-block;
+  height: 150px;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.funder-logos {
+  position: relative;
+  height: 90%;
+  width: 100%;
+  vertical-align: middle;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  bottom: 40%;
+}
+
+.MF-logo {
+  position: relative;
+  height: 40%;
+  max-width: 100%;
+  padding: 1% 0% 0% 0.6%;
+}
+
+.Wellcome-logo {
+  position: relative;
+  height: 70%;
+  max-width: 100%;
+  padding: 0.6% 0% 0% 0.6%;
+}
+
+.MRC-logo {
+  position: relative;
+  height: 60%;
+  max-width: 100%;
+  padding: 0.6% 0% 0% 0.6%;
+}

@@ -4,6 +4,9 @@ from flask_cors import CORS, cross_origin
 import time 
 import requests 
 
+#from PopPUNK.assign_query import assign_query
+from PopPUNK.web import sketch_to_hdf5
+
 UPLOAD_FOLDER = 'uploads'
 ALLOWED_EXTENSIONS = set(['txt', 'fa', 'fna', 'fas', 'fasta'])
 
@@ -11,6 +14,12 @@ app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 CORS(app, expose_headers='Authorization')
+
+import json
+import h5py
+import os 
+import sys
+import numpy as np
 
 def api():
     url = "https://microreact.org/api/project/"
@@ -22,7 +31,7 @@ def api():
 
     data = {"name":"PopPUNK-web-testing","data":clusters,"tree":tree}
     x = requests.post(url, data = data)
-    print(x.text)
+    
     return x.text.split('url":')[1].replace("}", "")
 
 
@@ -42,6 +51,17 @@ def fileUpload():
         return "not a json post"
     if request.json:
         sketch = request.json
+
+        sketch_out = open("outputs/sketch.txt", "w")
+        sketch_out.write(sketch)
+        sketch_out.close()
+
+        qNames = sketch_to_hdf5(sketch, "outputs")
+        #assign_query(sketch, "lm_example", q_files, "outputs", 6,
+                # True, "0.5", False, False, True,
+                 # added extra arguments for constructing sketchlib libraries
+               #  0, False)
+
         time.sleep(3) #Simulate running process 
         url = api()
         query = 2

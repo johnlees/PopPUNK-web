@@ -6,7 +6,9 @@
 
 # testing
 /coverage
-/lm_example
+/api/lm_example
+/api/PopPUNK
+/api/outputs
 
 # production
 /build

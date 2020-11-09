@@ -21,7 +21,7 @@ function App() {
 
   const [loading, setLoading] = useState(false); //define loading state
   const [progress, setStage] = useState("Sketching..."); //define result state
-  const [sketch, setSketch] = useState(null); //define sketch state
+  const [sketchResult, setSketch] = useState(null); //define sketch state
   const [display, setCluster] = useState(null); //define result state
 
   const onDrop = useCallback(acceptedFiles => {
@@ -33,7 +33,7 @@ function App() {
       const sketch = event.data
 
       setStage("Assigning lineage...");
-      setSketch(sketch)
+      setSketch(JSON.parse(sketch))
 
       console.log('Posting sketch to Flask!');
       fetch("http://localhost:5000/upload", {
@@ -46,7 +46,6 @@ function App() {
         body: JSON.stringify(sketch),
         }).then((response) => response.json()).then((responseJson) => {
       const result = JSON.parse(responseJson);
-      console.log(result);
       setCluster(result);
       setLoading(false);
       console.log("Flask delay complete!");
@@ -59,21 +58,14 @@ return (
       <>
         <div className="flexbox-container">
           <img className='logo' src={PopPUNKLogo} alt="PopPUNK logo"/>
-          <div id="title-font" className="title">Influenza & SARS-CoV-2</div>
+          <div id="title-font" className="title">Lineage Assignment</div>
           <Button style={{ marginLeft: "auto" }} href="https://poppunk.net/" variant="link">Return to PopPUNK homepage</Button>
         </div>
         <div>
           <div className="content-container">
             { (display === null &&  loading === false) && <DropZone onDrop = { onDrop } /> }
             { (display === null &&  loading === true) &&  <Loading progress = { progress }/> }
-            { display && <ClusterResult display = { display } sketch = { sketch }/> }
-            <div id="footer-font" className="footer-links">
-              <ul>
-                <a className="link" href="mailto:poppunk@poppunk.net">Contact</a>
-                <a> | </a>
-                <a className="link" href="https://github.com/johnlees/PopPUNK/issues">Report issues</a>
-              </ul>
-            </div>
+            { display && <ClusterResult display = { display } sketch = { sketchResult }/> }
           </div>
           <div className="funder-container">
             <div id="funder-font" className="funder-logos">
@@ -83,6 +75,13 @@ return (
               <img className="MRC-logo" src={MRCLogo} alt="PopPUNK logo"/>
             </div>
           </div>
+          <div id="footer-font" className="footer-links">
+              <ul>
+                <a className="link" href="mailto:poppunk@poppunk.net">Contact</a>
+                <a> | </a>
+                <a className="link" href="https://github.com/johnlees/PopPUNK/issues">Report issues</a>
+              </ul>
+            </div>
         </div>
       </>
     </main>

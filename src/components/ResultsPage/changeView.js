@@ -1,21 +1,12 @@
 import React, { useState } from "react";
-import Microreact from './Microreact'
-import Plots from './Plots'
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
-import Button from 'react-bootstrap/Button';
+
+import Microreact from './Microreact'
+import Plots from './Plots'
+import Stats from './Statistics'
 
 function ShowHide(props) {
-
-    function handleSaveToPC(jsonData) {
-        const fileData = JSON.stringify(jsonData);
-        const blob = new Blob([fileData], {type: "text/plain"});
-        const url = URL.createObjectURL(blob);
-        const link = document.createElement('a');
-        link.download = 'sketch.json';
-        link.href = url;
-        link.click();
-    };
 
     const [showStats, setShowStats] = useState(true)
     const [showPlots, setShowPlots] = useState(false)
@@ -43,8 +34,11 @@ function ShowHide(props) {
     const plot_class = showPlots ? "show-Plots" : "hide-Plots"
     const microreact_class = showMicroreact ? "show-Microreact" : "hide-Microreact"
 
+    const resultContainer_class = showMicroreact ? "extended-result-container" : "result-container"
+    const displayContainer_class = showMicroreact ? "extended-display-container" : "display-container"
+
     return (
-        <div className="result-container">
+        <div className={resultContainer_class}>
             <Navbar style={{backgroundColor: '#F5F5F5'}} expand="lg">
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
@@ -55,12 +49,11 @@ function ShowHide(props) {
                 </Nav>
                 </Navbar.Collapse>
             </Navbar >
-            <div className="display-container">
+            <div className={displayContainer_class}>
                 <>
                     <div className={stats_class}>
-                        <h4><p>Species: {props.display.species}</p><p>Cluster ID: {props.display.query}</p><p>Prevalence: {props.display.prev}</p><p>Other: {props.display.other}</p></h4>
-                        <p><Button className='download-button' variant="outline-primary" onClick={ handleSaveToPC.bind(null, props.sketch) } >Download sketch</Button></p>
-                     </div>
+                        <Stats display={ props.display } sketch={ props.sketch }/>
+                    </div>
                     <div className={plot_class}>
                         <Plots display={ props.display }/>
                     </div>

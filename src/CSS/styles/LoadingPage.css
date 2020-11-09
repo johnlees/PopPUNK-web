@@ -14,3 +14,11 @@
     position: relative;
     top: 3%;
 }
+
+.loader-container {
+    display: flex;
+    flex-direction: column;
+    height: 650px;
+    justify-content: center;
+    align-items: center;
+}

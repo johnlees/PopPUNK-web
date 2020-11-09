@@ -1,0 +1,24 @@
+/* Loader */
+.custom-loader {
+    animation: spin 5s linear infinite;
+    position: relative;
+    width: 10%;
+}
+  
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+  
+.progress-text{
+    position: relative;
+    top: 3%;
+}
+
+.loader-container {
+    display: flex;
+    flex-direction: column;
+    height: 650px;
+    justify-content: center;
+    align-items: center;
+}

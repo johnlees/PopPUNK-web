@@ -1,0 +1,65 @@
+.text-center {
+    display: flex;
+    padding: 20px;
+    height: 70px;
+    justify-content: center;
+}
+
+.landing-grid {
+    display: inline-grid;
+    grid-template-columns: 50% 50%;
+    padding: 1.5% 5% 0% 5%;
+    height: 600px;
+    width: 100%
+}
+
+.description {
+    position: relative;
+    width: 85%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row:1;
+}
+
+.description-text {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 20%;
+    background-color: #FFFFFF;
+    margin: 6% 0% 6% 0%;
+    box-shadow: 0px 10px 13px -7px #000000, -3px 15px 50px -5px rgba(255,150,133,0);
+}
+
+/* Dropzone */
+.dropzone {
+    height: 100%;
+    width: 100%;
+    border: 5px dashed #8F8F8F;
+    outline: none;
+    cursor: pointer;
+    display: flex;
+    float: right;
+    justify-content: center;
+    align-items: center;
+    background-color: #FFFFFF;
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row:1;
+}
+
+.dropzone-active {
+    background-color: #F8F8FF;
+    border: 5px solid #00008B;
+}
+
+.dropzone-content {
+    align-self: center;
+    font-size: 24px;
+}

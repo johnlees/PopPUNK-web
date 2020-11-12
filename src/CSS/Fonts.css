@@ -1,7 +1,7 @@
 #title-font {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Lucida Sans Unicode", "Lucida Grande", serif;
   font-size: 43px;
-  color: #ff8080;
+  color: #F7F7F7;
   font-weight: normal;
   text-decoration: none;
   font-style: normal;
@@ -94,6 +94,28 @@
 
 #funder-font {
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 22px;
+  font-size: 19px;
+  word-spacing: 1px;
   color: #000000;
+  font-weight: normal;
+  text-decoration: none;
+  font-style: normal;
+  font-variant: normal;
+  text-transform: none;
+}
+
+#navbar-font {
+  color: #F7F7F7
+}
+
+#navbar-font-active {
+  color: #000000
+}
+
+#home-link {
+  color: #F7F7F7
+}
+
+#italics {
+  font-style: italic;
 }

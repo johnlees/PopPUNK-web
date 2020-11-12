@@ -34,7 +34,8 @@
     height: 20%;
     background-color: #FFFFFF;
     margin: 6% 0% 6% 0%;
-    box-shadow: 0px 10px 13px -7px #000000, -3px 15px 50px -5px rgba(255,150,133,0);
+    box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0);
+    border-radius: 3px;
 }
 
 /* Dropzone */
@@ -56,7 +57,7 @@
 
 .dropzone-active {
     background-color: #F8F8FF;
-    border: 5px solid #00008B;
+    border: 5px solid #4682B4;
 }
 
 .dropzone-content {

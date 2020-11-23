@@ -57,11 +57,11 @@ App {
   position: relative;
   display: flex;
   flex-direction: inline-block;
-  height: 115px;
+  height: 105px;
   width: 100%;
   justify-content: center;
   align-items: center;
-  padding: 1.5% 0% 0% 0%;
+  padding: 0.7% 0% 0% 0%;
 }
 
 .funder-logos {

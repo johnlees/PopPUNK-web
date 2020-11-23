@@ -25,17 +25,18 @@ function App() {
   const [display, setCluster] = useState(null); //define result state
 
   const onDrop = useCallback(acceptedFiles => {
-    
+
     setLoading(true);
 
-    window.Worker.postMessage(acceptedFiles);
-    window.Worker.onmessage = function(event){
+    window.Worker[0].postMessage(acceptedFiles);
+    window.Worker[0].onmessage = function(event){
+
       const sketch = event.data
-
       setStage("Assigning lineage...");
-      setSketch(JSON.parse(sketch))
-
-      console.log('Posting sketch to Flask!');
+      const sketchObj = JSON.parse(sketch)
+      const species = "S.pneumoniae";
+      sketchObj.species = species;
+      setSketch(sketchObj)
       fetch("http://localhost:5000/upload", {
         method: 'POST',
         mode: 'cors',
@@ -43,16 +44,16 @@ function App() {
           'Accept': 'application/json',
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify(sketch),
+        body: JSON.stringify({'sketch': sketch, 'species': species}),
         }).then((response) => response.json()).then((responseJson) => {
+      setStage("Building network...");
       const result = JSON.parse(responseJson);
       setCluster(result);
       setLoading(false);
-      console.log("Flask delay complete!");
     });
   };
 }, [setLoading, setStage, setSketch, setCluster]); //Recieve sketch, post to Flask and recieve response from Flask
-  
+
 return (
     <main className='App'>
       <>

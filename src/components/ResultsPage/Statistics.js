@@ -23,17 +23,22 @@ function Statistics(props) {
             <div className="item1">
                 <h3>General</h3>
                     <h5 className="padding-tab">
-                        <p><a>Species:</a><a id="italics"> {props.display.species}</a></p>
-                        <p>Cluster ID: {props.display.query}</p>
-                        <p>Prevalence: {props.display.prev}</p>
+                        <p>Species:</p>
+                        <p className="tab" id="italics"> {props.display.species}</p>
+                        <p>Cluster ID:</p>
+                        <p className="tab">{props.display.query}</p>
+                        <p>Prevalence:</p>
+                        <p className="tab">{props.display.prev}</p>
                         <Button className='download-button' variant="outline-primary" onClick={ handleSaveToPC.bind(null, props.sketch) } >Download sketch</Button>
                     </h5>
             </div>
             <div className="item2">
                 <h3>Sequence quality</h3>
                     <h5 className="padding-tab">
-                        <p>Genome length: {props.sketch.length}</p>
-                        <p>Number of missing bases: {props.sketch.missing_bases}</p>
+                        <p>Genome length:</p> 
+                        <p className="tab">{props.sketch.length}</p>
+                        <p>Number of missing bases: </p>
+                        <p className="tab">{props.sketch.missing_bases}</p>
                         <p>Base frequencies:</p>
                         <p className="tab">A: {roundToTwo(props.sketch.bases[0])}</p>
                         <p className="tab">C: {roundToTwo(props.sketch.bases[1])}</p>

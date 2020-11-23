@@ -1,6 +1,6 @@
 /* Loader */
 .custom-loader {
-    animation: spin 5s linear infinite;
+    animation: spin 4s linear infinite;
     position: relative;
     width: 10%;
 }

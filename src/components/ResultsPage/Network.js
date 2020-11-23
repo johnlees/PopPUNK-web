@@ -1,8 +1,9 @@
-import React, { Component } from 'react';
-import cytoscape from 'cytoscape';
+import React from 'react';
+import CytoscapeComponent from 'react-cytoscapejs';
+import Cytoscape from 'cytoscape';
 import cise from 'cytoscape-cise';
 
-cytoscape.use(cise);
+Cytoscape.use(cise);
 
 let cyStyle = {
     height: '100%',
@@ -10,6 +11,8 @@ let cyStyle = {
 };
 
 let conf = {
+    animate: true, // Whether to show the layout as it's running
+    ready: undefined, // Callback on layoutready
     boxSelectionEnabled: false,
     autounselectify: true,
     zoomingEnabled: true,
@@ -27,7 +30,7 @@ let conf = {
                },
             },
         {
-            selector: 'node[label = "6569_7#1"]',
+            selector: 'node[label = "query"]',
             style: {
                 'text-opacity': 0.5,
                 'text-valign': 'center',
@@ -41,35 +44,18 @@ let conf = {
         {
             selector: 'edge',
             style: {
-                'width': 0.1,
+                'width': 0.4,
             }
         }
-    ],
-    layout: {
-        name: 'cise'
-    }
+    ]
 };
 
-class Network extends Component {
-    constructor(props) {
-        super(props);
-        this.state = { cy: {} }
-    }
+const layout =  { name: 'cise' }
 
-    componentDidMount() {
-        conf.container = this.cyRef;
-        conf.elements = this.props.network;
-        const cy = cytoscape(conf);
-        this.state = { cy };
-        console.log(conf)
-        // cy.json();
+function Network(props) {
+        return (
+        <CytoscapeComponent elements={CytoscapeComponent.normalizeElements(props.network.elements)} style={cyStyle} stylesheet={conf.style} layout={layout}/>
+        );
     }
-
-    render() {
-        return <div style={cyStyle} ref={(cyRef) => {
-            this.cyRef = cyRef;
-        }}/>
-    }
-}
 
 export default Network;

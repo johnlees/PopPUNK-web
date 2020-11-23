@@ -18,15 +18,15 @@ const DropZone = ({ onDrop }) => {
           <>
             <div className="description-text">
               <p id="description-header-font"> What is PopPUNK-web?</p>
-              <a id="description-font">PopPUNK-web is a genomic epidemiology tool designed to identify the species and strain of a pathogen sequence.</a>
+              <div id="description-font">PopPUNK-web is a genomic epidemiology tool designed to identify the species and strain of a pathogen sequence.</div>
             </div>
             <div className="description-text">
               <p id="description-header-font">Is PopPUNK-web secure?</p>
-              <a id="description-font">Sequences are sketched in-Browser and discarded after sketching.</a>
+              <div id="description-font">Sequences are sketched in-Browser and discarded after sketching.</div>
             </div>
             <div className="description-text">
               <p id="description-header-font">What pathogens are supported?</p>
-              <a id="description-font">SARS-CoV-2, Influenza and Pneumococcus sequences are currently supported.</a>
+              <div id="description-font">SARS-CoV-2, Influenza and Pneumococcus sequences are currently supported.</div>
             </div>
           </>
         </div>

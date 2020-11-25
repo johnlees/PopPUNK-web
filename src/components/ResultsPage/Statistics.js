@@ -11,32 +11,41 @@ function Statistics(props) {
         link.download = 'sketch.json';
         link.href = url;
         link.click();
-    }; 
+    };
 
-    function roundToTwo(num) {   
-        const freq = parseFloat(num) 
+    function roundToTwo(num) {
+        const freq = parseFloat(num)
         return +(Math.round(freq + "e+2")  + "e-2");
     }
 
     return (
         <>
-            <h3>General</h3>
-                <h5>
-                    <p>Species: {props.display.species}</p>
-                    <p>Cluster ID: {props.display.query}</p>
-                    <p>Prevalence: {props.display.prev}</p>
-                </h5>
-            <h3>Sequence quality</h3>
-                <h5>
-                    <p>Genome length: {props.sketch.length}</p>
-                    <p>Number of missing bases: {props.sketch.missing_bases}</p>
-                    <p>Base frequencies:</p>
-                    <p>A: {roundToTwo(props.sketch.bases[0])}</p>
-                    <p>C: {roundToTwo(props.sketch.bases[1])}</p>
-                    <p>G: {roundToTwo(props.sketch.bases[2])}</p>
-                    <p>T: {roundToTwo(props.sketch.bases[3])}</p>
-                </h5>
-            <p><Button className='download-button' variant="outline-primary" onClick={ handleSaveToPC.bind(null, props.sketch) } >Download sketch</Button></p>
+            <div className="item1">
+                <h3>General</h3>
+                    <h5 className="padding-tab">
+                        <p>Species:</p>
+                        <p className="tab" id="italics"> {props.display.species}</p>
+                        <p>Cluster ID:</p>
+                        <p className="tab">{props.display.query}</p>
+                        <p>Prevalence:</p>
+                        <p className="tab">{props.display.prev}</p>
+                        <Button className='download-button' variant="outline-primary" onClick={ handleSaveToPC.bind(null, props.sketch) } >Download sketch</Button>
+                    </h5>
+            </div>
+            <div className="item2">
+                <h3>Sequence quality</h3>
+                    <h5 className="padding-tab">
+                        <p>Genome length:</p>
+                        <p className="tab">{props.sketch.length}</p>
+                        <p>Number of missing bases: </p>
+                        <p className="tab">{props.sketch.missing_bases}</p>
+                        <p>Base frequencies:</p>
+                        <p className="tab">A: {roundToTwo(props.sketch.bases[0])}</p>
+                        <p className="tab">C: {roundToTwo(props.sketch.bases[1])}</p>
+                        <p className="tab">G: {roundToTwo(props.sketch.bases[2])}</p>
+                        <p className="tab">T: {roundToTwo(props.sketch.bases[3])}</p>
+                    </h5>
+            </div>
         </>
     );
 };

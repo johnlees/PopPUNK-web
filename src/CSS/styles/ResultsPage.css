@@ -6,21 +6,37 @@
     align-content: center;
     text-align: center;
 }
-  
+
 .chart-title {
     display: flex;
     position: relative;
     justify-content: left;
     text-align: center;
 }
-  
+
 .show-Stats {
-    padding: 1.5% 1.5% 0% 1.5%;
-    display: flex;
-    flex-direction: column;
-    max-width: 100%;
-    text-align: left;
     position: relative;
+    padding: 1.5% 1.5% 0% 1.5%;
+    width: 100%;
+    height: 100%;
+    display: inline-grid;
+    grid-template-columns: 50% 50%;
+}
+
+.item1 {
+    max-width: 100%;
+    height: 100%;
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row:1;
+}
+
+.item2 {
+    max-width: 100%;
+    height: 100%;
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row:1;
 }
 
 .hide-Stats {
@@ -66,31 +82,15 @@
 
 .show-Plots {
     position: relative;
-    width: 100%;
+    max-width: 100%;
     height: 100%;
-    display: inline-grid;
-    grid-template-columns: 50% 50%;
+    display: flex;
     justify-content: center;
     align-content: center;
     align-items: center;
     justify-items: center;
 }
 
-.item1 {
-    max-width: 100%;
-    height: 100%;
-    grid-column-start: 1;
-    grid-column-end: 2;
-    grid-row:1;
-}
-
-.item2 {
-    max-width: 100%;
-    height: 100%;
-    grid-column-start: 2;
-    grid-column-end: 3;
-    grid-row:1;
-}
 
 .hide-Plots {
     position: relative;
@@ -98,6 +98,21 @@
     height: 100%;
     display: none;
     flex-direction: row;
+    justify-content: center;
+}
+
+.show-Phylo {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+}
+
+.hide-Phylo {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: none;
     justify-content: center;
 }
 
@@ -110,8 +125,44 @@
 
 .hide-Microreact {
     position: relative;
-    width: 90%;
+    width: 100%;
     height: 100%;
     display: none;
     justify-content: center;
+}
+
+.show-Cytoscape {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+}
+
+.hide-Cytoscape {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: none;
+    justify-content: center;
+}
+
+.nav-link-active {
+    background-color: #a3c2db;
+    border: 0.1px solid #a3c2db;
+    border: 1px ridge rgba(70,130,180,0.23);
+    border-radius: 6px;
+}
+
+.custom-navbar {
+    background-Color: #4682B4;
+    border: 4px ridge rgba(70,130,180,0.23);
+    border-radius: 3px 3px 0px 0px;
+}
+
+.padding-tab {
+    padding: 2% 0% 0% 3%;
+}
+
+.tab {
+    padding: 0% 0% 0% 3%;
 }

@@ -18,12 +18,12 @@ class Plots extends React.Component{
                         title: "Prevalence (%)",
                     },
                     paper_bgcolor:'rgba(0,0,0,0)',
-                    plot_bgcolor:'rgba(0,0,0,0)',  
+                    plot_bgcolor:'rgba(0,0,0,0)',
                     margin: {
-                        l:50, 
-                        r:0, 
-                        b:50, 
-                        t:0, 
+                        l:50,
+                        r:0,
+                        b:50,
+                        t:0,
                         pad: 0},
                     height: 550,
                     width: 1350

@@ -6,14 +6,14 @@
     align-content: center;
     text-align: center;
 }
-  
+
 .chart-title {
     display: flex;
     position: relative;
     justify-content: left;
     text-align: center;
 }
-  
+
 .show-Stats {
     position: relative;
     padding: 1.5% 1.5% 0% 1.5%;
@@ -146,8 +146,8 @@
     justify-content: center;
 }
 
-.nav-link-active { 
-    background-color: #a3c2db; 
+.nav-link-active {
+    background-color: #a3c2db;
     border: 0.1px solid #a3c2db;
     border: 1px ridge rgba(70,130,180,0.23);
     border-radius: 6px;

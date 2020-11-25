@@ -20,7 +20,7 @@
     "react-dom": "^16.13.1",
     "react-dropzone": "^11.2.0",
     "react-plotly.js": "^2.5.0",
-    "react-scripts": "^3.4.4",
+    "react-scripts": "^3.4.4"
   },
   "scripts": {
     "start": "react-scripts start",

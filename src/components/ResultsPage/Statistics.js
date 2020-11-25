@@ -11,10 +11,10 @@ function Statistics(props) {
         link.download = 'sketch.json';
         link.href = url;
         link.click();
-    }; 
+    };
 
-    function roundToTwo(num) {   
-        const freq = parseFloat(num) 
+    function roundToTwo(num) {
+        const freq = parseFloat(num)
         return +(Math.round(freq + "e+2")  + "e-2");
     }
 
@@ -35,7 +35,7 @@ function Statistics(props) {
             <div className="item2">
                 <h3>Sequence quality</h3>
                     <h5 className="padding-tab">
-                        <p>Genome length:</p> 
+                        <p>Genome length:</p>
                         <p className="tab">{props.sketch.length}</p>
                         <p>Number of missing bases: </p>
                         <p className="tab">{props.sketch.missing_bases}</p>

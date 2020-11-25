@@ -40,7 +40,7 @@ function App() {
       fetch("http://localhost:5000/upload", {
         method: 'POST',
         mode: 'cors',
-        headers : { 
+        headers : {
           'Accept': 'application/json',
           'Content-Type': 'application/json'
         },
@@ -60,7 +60,7 @@ return (
         <div className="flexbox-container">
           <img className='logo' src={PopPUNKLogo} alt="PopPUNK logo"/>
           <div id="title-font" className="title">Lineage Assignment</div>
-          <Button style={{ marginLeft: "auto", padding: "0% 6.5% 0% 0%" }} id="home-link" href="https://poppunk.net/" variant="link">Return to PopPUNK homepage</Button>
+          <Button style={{ marginLeft: "auto", padding: "0% 5% 0% 0%" }} id="home-link" href="https://poppunk.net/" variant="link">Return to PopPUNK homepage</Button>
         </div>
         <div>
           <div className="content-container">

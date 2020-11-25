@@ -1,20 +1,40 @@
-import React, { useRef, useEffect } from 'react';
-import PhyloCanvas from 'phylocanvas';
+import React from 'react';
+import Phylocanvas from 'phylocanvas'
 
-export default function Phylocanvas() {
-  const containerRef = useRef();
-  
-  useEffect(() => {
-    const config = {
-      containerElement: containerRef.current
-    }
-    console.log(PhyloCanvas)
-    const tree = PhyloCanvas.createTree('phylocanvas',config);
-    console.log(tree)
-    tree.load('(A:0.1,B:0.2,(C:0.3,D:0.4)E:0.5)F;');
-  }, []);
-
-  return (
-      <div ref={containerRef} style={ {height: "100%", width: "100%"}} />
-  );
+const config = {
+  fillCanvas: true,
+  hoverLabel: true
 };
+
+class Phylo extends React.Component{
+    constructor(props){
+        super(props);
+        this.renderPylocanvasElement = this.renderPylocanvasElement.bind(this);
+      };
+
+    renderPylocanvasElement(){
+        const element = document.getElementById('trees');
+        this.cy = Phylocanvas.createTree(element, config);
+
+        this.cy.load(this.props.phylogeny);
+        this.cy.setTreeType('radial');
+        this.cy.draw(true)
+        console.log(this.cy)
+    };
+
+    componentDidMount(){
+        this.renderPylocanvasElement();
+    }
+
+    componentDidUpdate(){
+      this.renderPylocanvasElement();
+  }
+    render() {
+      return (
+        <div>
+        </div>
+      );
+    }
+}
+
+export default Phylo;

@@ -7,6 +7,7 @@ import Microreact from './Microreact'
 import Plots from './Plots'
 import Stats from './Statistics'
 import Loading from '../LoadingPage/Loading'
+import Tree from './Phylocanvas'
 
 function ChangeView(props) {
 
@@ -86,6 +87,7 @@ function ChangeView(props) {
                     <Nav.Link className={"nav-link" + (showStats ? '-active' : '')} id={"navbar-font" + (showStats ? '-active' : '')} onClick={ onStats }>Statistics</Nav.Link>
                     <Nav.Link className={"nav-link" + (showPlots ? '-active' : '')} id={"navbar-font" + (showPlots ? '-active' : '')}  onClick={ onPlots }>Plots</Nav.Link>
                     <Nav.Link className={"nav-link" + (showMicroreact ? '-active' : '')} id={"navbar-font" + (showMicroreact ? '-active' : '')}  onClick={ onMicrorreact }>Microreact</Nav.Link>
+                    <Nav.Link className={"nav-link" + (showPhylo ? '-active' : '')} id={"navbar-font" + (showPhylo ? '-active' : '')}  onClick={ onPhylo }>Phylocanvas</Nav.Link>
                     <Nav.Link className={"nav-link" + (showCytoscape ? '-active' : '')} id={"navbar-font" + (showCytoscape ? '-active' : '')}  onClick={ onCytoscape }>Network</Nav.Link>
                 </Nav>
                 </Navbar.Collapse>
@@ -100,6 +102,10 @@ function ChangeView(props) {
                     </div>
                     <div className={microreact_class}>
                         <Microreact URL={ props.display.microreactUrl }/>
+                    </div>
+                    <div className={phylo_class} id="trees">
+                        { (networkLoading === true) && <Loading progress = "Fetching Cluster Phylogeny..."/> }
+                        { (networkLoading === false) && <Tree phylogeny = { recievedNetwork.phylogeny }/> }
                     </div>
                     <div className={cytoscape_class}>
                         { (networkLoading === true) && <Loading progress = "Fetching Network..."/> }

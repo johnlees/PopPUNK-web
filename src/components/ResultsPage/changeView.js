@@ -9,6 +9,17 @@ import Stats from './Statistics'
 import Loading from '../LoadingPage/Loading'
 import Tree from './Phylocanvas'
 
+import DarkStatsIcon from './icons/noun_text_dark.png'
+import LightStatsIcon from './icons/noun_text_light.png'
+import DarkChartIcon from './icons/noun_bar chart_dark.png'
+import LightChartIcon from './icons/noun_bar chart_light.png'
+import DarkMicroIcon from './icons/noun_pandemic_dark.png'
+import LightMicroIcon from './icons/noun_pandemic_light.png'
+import DarkTreeIcon from './icons/noun_Binary tree_dark.png'
+import LightTreeIcon from './icons/noun_Binary tree_light.png'
+import DarkNetworkIcon from './icons/noun_Network_dark.png'
+import LightNetworkIcon from './icons/noun_Network_light.png'
+
 function ChangeView(props) {
 
     const [showStats, setShowStats] = useState(true)
@@ -18,6 +29,7 @@ function ChangeView(props) {
     const [showCytoscape, setShowCytoscape] = useState(false)
     const [networkLoading, setNetworkLoading] = useState(true)
     const [recievedNetwork, setNetwork] = useState(null)
+    const [recievedPhylogeny, setPhylogeny] = useState(null)
 
     const onStats = () => {
         setShowStats(true)
@@ -71,24 +83,39 @@ function ChangeView(props) {
     window.Worker[1].postMessage(props.sketch.species);
     window.Worker[1].onmessage = function(NetEvent){
         if (networkLoading===true && recievedNetwork==null) {
-            const net = JSON.parse(NetEvent.data);
-            setNetwork(net);
+            const response = JSON.parse(NetEvent.data);
+            setNetwork(response.network);
+            setPhylogeny(response.phylogeny);
             setNetworkLoading(false);
         };
     };
 
     return (
-
         <div className={resultContainer_class}>
             <Navbar className="custom-navbar" expand="lg">
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                 <Nav >
-                    <Nav.Link className={"nav-link" + (showStats ? '-active' : '')} id={"navbar-font" + (showStats ? '-active' : '')} onClick={ onStats }>Statistics</Nav.Link>
-                    <Nav.Link className={"nav-link" + (showPlots ? '-active' : '')} id={"navbar-font" + (showPlots ? '-active' : '')}  onClick={ onPlots }>Plots</Nav.Link>
-                    <Nav.Link className={"nav-link" + (showMicroreact ? '-active' : '')} id={"navbar-font" + (showMicroreact ? '-active' : '')}  onClick={ onMicrorreact }>Microreact</Nav.Link>
-                    <Nav.Link className={"nav-link" + (showPhylo ? '-active' : '')} id={"navbar-font" + (showPhylo ? '-active' : '')}  onClick={ onPhylo }>Phylocanvas</Nav.Link>
-                    <Nav.Link className={"nav-link" + (showCytoscape ? '-active' : '')} id={"navbar-font" + (showCytoscape ? '-active' : '')}  onClick={ onCytoscape }>Network</Nav.Link>
+                    <Nav.Link className={"nav-link" + (showStats ? '-active' : '')} id={"navbar-font" + (showStats ? '-active' : '')} onClick={ onStats }>
+                        <img style={{height:"35px",width:"35px"}} src={(showStats ? DarkStatsIcon:LightStatsIcon)} alt="stats-icon"/>
+                        Metrics
+                    </Nav.Link>
+                    <Nav.Link className={"nav-link" + (showPlots ? '-active' : '')} id={"navbar-font" + (showPlots ? '-active' : '')}  onClick={ onPlots }>
+                        <img style={{height:"35px",width:"35px"}} src={(showPlots ? DarkChartIcon:LightChartIcon)} alt="plot-icon"/>
+                        Cluster Prevalences
+                    </Nav.Link>
+                    <Nav.Link className={"nav-link" + (showMicroreact ? '-active' : '')} id={"navbar-font" + (showMicroreact ? '-active' : '')}  onClick={ onMicrorreact }>
+                        <img style={{height:"35px",width:"35px"}} src={(showMicroreact ? DarkMicroIcon:LightMicroIcon)} alt="microreact-icon"/>
+                        Population Phylogeny
+                    </Nav.Link>
+                    <Nav.Link className={"nav-link" + (showPhylo ? '-active' : '')} id={"navbar-font" + (showPhylo ? '-active' : '')}  onClick={ onPhylo }>
+                        <img style={{height:"35px",width:"35px"}} src={(showPhylo ? DarkTreeIcon:LightTreeIcon)} alt="phylo-icon"/>
+                        Cluster Phylogeny
+                    </Nav.Link>
+                    <Nav.Link className={"nav-link" + (showCytoscape ? '-active' : '')} id={"navbar-font" + (showCytoscape ? '-active' : '')}  onClick={ onCytoscape }>
+                        <img style={{height:"35px",width:"35px"}} src={(showCytoscape ? DarkNetworkIcon:LightNetworkIcon)} alt="cyto-icon"/>
+                        Cluster Network
+                    </Nav.Link>
                 </Nav>
                 </Navbar.Collapse>
             </Navbar >
@@ -105,11 +132,11 @@ function ChangeView(props) {
                     </div>
                     <div className={phylo_class} id="trees">
                         { (networkLoading === true) && <Loading progress = "Fetching Cluster Phylogeny..."/> }
-                        { (networkLoading === false) && <Tree phylogeny = { recievedNetwork.phylogeny }/> }
+                        { (networkLoading === false) && <Tree phylogeny = { recievedPhylogeny }/> }
                     </div>
-                    <div className={cytoscape_class}>
+                    <div className={cytoscape_class} style={{height:'100%',width:'100%'}} id="cy">
                         { (networkLoading === true) && <Loading progress = "Fetching Network..."/> }
-                        { (networkLoading === false) && <Network network = { recievedNetwork.network }/> }
+                        { (networkLoading === false) && <Network network = { recievedNetwork }/> }
                     </div>
                 </>
             </div>

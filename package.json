@@ -10,7 +10,6 @@
     "create-react-app": "^3.4.1",
     "cytoscape": "^3.16.3",
     "cytoscape-cise": "^1.0.0",
-    "cytoscape-spread": "^3.0.0",
     "phylocanvas": "^2.8.1",
     "plotly.js": "^1.57.1",
     "react": "^16.13.1",

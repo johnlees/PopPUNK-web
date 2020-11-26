@@ -21,7 +21,7 @@ App {
   justify-content: center;
   align-items: center;
   background-color:#4682B4;
-  margin: 0% 0% 2% 0%;
+  margin: 0% 0% 1.5% 0%;
   border-bottom: 7px ridge rgba(70,130,180,0.23);
   border-radius: 0px 0px 4px 4px;
 }

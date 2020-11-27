@@ -7,35 +7,35 @@ const config = {
   lineWidth: 3,
   branchColour: 'rgb(70, 130, 180)'
 };
-
+var count = 0
 class Phylo extends React.Component{
     constructor(props){
         super(props);
+        this.phyloRef = React.createRef();
         this.renderPylocanvasElement = this.renderPylocanvasElement.bind(this);
       };
     renderPylocanvasElement(){
-        const element = document.getElementById('trees');
-        this.tree = Phylocanvas.createTree(element, config);
+        this.tree = Phylocanvas.createTree(this.phyloRef.current, config);
         this.tree.load(this.props.phylogeny);
-        this.tree.setTreeType('radial');
+        this.tree.setTreeType('rectangular');
         this.tree.setNodeSize(8);
         this.tree.setTextSize(20);
-        this.tree.draw();
-        console.log(this.tree)
+        this.tree.draw()
     };
     componentDidMount() {
       this.renderPylocanvasElement();
     };
-    componentDidUpdate(prevProps){
-      this.renderPylocanvasElement();
-    };
-    componentDidUnmout(){
-      this.destroy();
+
+    componentDidUpdate(){
+      console.log(count)
+      if (count===0) {
+        this.renderPylocanvasElement();
+        count += 1
+      };
     };
     render() {
       return (
-        <div>
-        </div>
+        <div ref={this.phyloRef} style={{height:'100%', weight:'100%'}}> </div>
       );
     }
 }

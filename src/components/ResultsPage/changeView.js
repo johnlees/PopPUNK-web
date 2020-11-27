@@ -130,9 +130,8 @@ function ChangeView(props) {
                     <div className={microreact_class}>
                         <Microreact URL={ props.display.microreactUrl }/>
                     </div>
-                    <div className={phylo_class} id="trees">
-                        { (networkLoading === true) && <Loading progress = "Fetching Cluster Phylogeny..."/> }
-                        { (networkLoading === false) && <Tree phylogeny = { recievedPhylogeny }/> }
+                    <div className={phylo_class}>
+                        { (networkLoading === true && showPhylo === false) ? <Loading progress = "Fetching Cluster Phylogeny..."/> : <Tree phylogeny = { recievedPhylogeny } />}
                     </div>
                     <div className={cytoscape_class} style={{height:'100%',width:'100%'}} id="cy">
                         { (networkLoading === true) && <Loading progress = "Fetching Network..."/> }

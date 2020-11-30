@@ -7,7 +7,9 @@ const config = {
   lineWidth: 3,
   branchColour: 'rgb(70, 130, 180)'
 };
+
 var count = 0
+
 class Phylo extends React.Component{
     constructor(props){
         super(props);
@@ -20,14 +22,34 @@ class Phylo extends React.Component{
         this.tree.setTreeType('rectangular');
         this.tree.setNodeSize(8);
         this.tree.setTextSize(20);
-        this.tree.draw()
-    };
+        var index = 0;
+        while (index < this.tree.leaves.length) {
+          console.log(index)
+          if (this.tree.leaves[index].id === "query"){
+            this.tree.leaves[index].setDisplay({
+              colour: 'red',
+              shape: 'circle',
+              size: 2,
+              labelStyle: {
+                colour: 'red',
+                textSize: 20,
+                font: 'Arial',
+                format: 'bold'
+              }
+          });
+          this.tree.draw();
+          index++;
+        } else {
+            index++;
+          };
+        };
+      };
+
     componentDidMount() {
       this.renderPylocanvasElement();
     };
 
     componentDidUpdate(){
-      console.log(count)
       if (count===0) {
         this.renderPylocanvasElement();
         count += 1
@@ -35,7 +57,7 @@ class Phylo extends React.Component{
     };
     render() {
       return (
-        <div ref={this.phyloRef} style={{height:'100%', weight:'100%'}}> </div>
+          <div ref={this.phyloRef} style={{height:'100%', weight:'100%'}}></div>
       );
     }
 }

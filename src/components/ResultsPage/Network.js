@@ -29,7 +29,8 @@ class Cyto extends React.Component{
                     'background-color': "#4682B4",
                     'border-color': "#bfbfbf",
                     'border-width': "0.6",
-                    'border-style': "solid"
+                    'border-style': "solid",
+                    "font-size": "12px"
                 })
                 .selector('edge')
                 .css({'width': 0.4})

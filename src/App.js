@@ -33,7 +33,7 @@ function App() {
 
       const sketch = event.data
       setStage("Assigning lineage...");
-      const sketchObj = JSON.parse(sketch)
+      const sketchObj = JSON.parse(sketch);
       const species = "S.pneumoniae";
       sketchObj.species = species;
       setSketch(sketchObj)

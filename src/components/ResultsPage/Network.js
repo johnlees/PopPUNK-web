@@ -22,6 +22,7 @@ class Cyto extends React.Component{
             style: cytoscape.stylesheet()
                 .selector('node')
                 .css({
+                    'label': 'data(label)',
                     'text-opacity': 0.5,
                     'text-valign': 'center',
                     'text-halign': 'right',

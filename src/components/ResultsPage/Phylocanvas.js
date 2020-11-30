@@ -22,6 +22,7 @@ class Phylo extends React.Component{
         this.tree.setTreeType('rectangular');
         this.tree.setNodeSize(8);
         this.tree.setTextSize(20);
+        this.tree.resizeToContainer();
         var index = 0;
         while (index < this.tree.leaves.length) {
           if (this.tree.leaves[index].id === "query"){
@@ -36,7 +37,7 @@ class Phylo extends React.Component{
                 format: 'bold'
               }
           });
-          this.tree.draw();
+          this.tree.draw(true);
           index++;
         } else {
             index++;
@@ -54,6 +55,7 @@ class Phylo extends React.Component{
         count += 1
       };
     };
+
     render() {
       return (
           <div ref={this.phyloRef} style={{height:'100%', weight:'100%'}}></div>

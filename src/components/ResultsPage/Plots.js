@@ -35,11 +35,17 @@ class Plots extends React.Component{
             height: 550,
             width: 1350
         };
-        Plotly.newPlot(this.PlotlyRef.current, data, layout, {scrollZoom: true, displayModeBar: false});
+        Plotly.newPlot(this.PlotlyRef.current, data, layout, {scrollZoom: true, displayModeBar: false, responsive: true});
     };
 
     componentDidMount() {
         this.renderPlotlyElement();
+    };
+
+    componentDidUpdate(prevProps) {
+        if (prevProps!==this.props) {
+            this.renderPlotlyElement();
+        };
     };
 
     render() {

@@ -24,7 +24,6 @@ class Phylo extends React.Component{
         this.tree.setTextSize(20);
         var index = 0;
         while (index < this.tree.leaves.length) {
-          console.log(index)
           if (this.tree.leaves[index].id === "query"){
             this.tree.leaves[index].setDisplay({
               colour: 'red',

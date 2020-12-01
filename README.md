@@ -16,6 +16,10 @@ git clone https://github.com/johnlees/PopPUNK
 cd PopPUNK
 python poppunk_api-runner.py
 ```
+This will run a development server at http://localhost:5000. As this port (5000) is different to that running the frontend (3000), you must specify a proxy in PopPUNK-web so the frontend and backend can communicate. This can be done by adding the following line to ```package.json```:
+```
+"proxy": "http://localhost:5000"
+```
 
 ## Compiling the WebAssembly
 

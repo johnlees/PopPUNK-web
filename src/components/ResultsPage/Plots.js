@@ -50,7 +50,7 @@ class Plots extends React.Component{
 
     render() {
         return (
-            <div ref={this.PlotlyRef} style={{height:'95%', weight:'95%'}}></div> 
+            <div ref={this.PlotlyRef} style={{height:'95%'}}></div>
         );
     };
 };

@@ -5,7 +5,13 @@ const config = {
   fillCanvas: true,
   hoverLabel: true,
   lineWidth: 3,
-  branchColour: 'rgb(70, 130, 180)'
+  branchColour: 'rgb(70, 130, 180)',
+  branchScalar: 248236.77642023106,
+  initialBranchScalar: 248236.77642023106,
+  offsetx: 50,
+  offsety: 128.87783314895623,
+  farthestNodeFromRootX: 971,
+  farthestNodeFromRootY: 856.1904761904765
 };
 
 var count = 0
@@ -38,6 +44,7 @@ class Phylo extends React.Component{
               }
           });
           this.tree.draw(true);
+          console.log(this.tree)
           index++;
         } else {
             index++;
@@ -58,7 +65,7 @@ class Phylo extends React.Component{
 
     render() {
       return (
-          <div ref={this.phyloRef} style={{height:'100%', weight:'100%'}}></div>
+          <div ref={this.phyloRef} style={{height:'100%', width:'100%'}}></div>
       );
     }
 }

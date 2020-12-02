@@ -82,11 +82,13 @@ function ChangeView(props) {
 
     window.Worker[1].postMessage(props.sketch.species);
     window.Worker[1].onmessage = function(NetEvent){
-        if (networkLoading===true && recievedNetwork==null) {
+        if (networkLoading===true && recievedNetwork==null && (typeof NetEvent.data === "string")) {
             const response = JSON.parse(NetEvent.data);
-            setNetwork(response.network);
-            setPhylogeny(response.phylogeny);
-            setNetworkLoading(false);
+            if (typeof response.phylogeny === "string") {
+                setNetwork(response.network);
+                setPhylogeny(response.phylogeny);
+                setNetworkLoading(false);
+            };
         };
     };
 

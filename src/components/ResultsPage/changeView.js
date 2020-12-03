@@ -134,7 +134,7 @@ function ChangeView(props) {
                     </div>
                     <div className={phylo_class}>
                         { (networkLoading === true) && <Loading progress = "Fetching Cluster Phylogeny..."/> }
-                        { (networkLoading === false) && <Tree phylogeny = { recievedPhylogeny } />}
+                        { (networkLoading === false && showPhylo === true) && <Tree phylogeny = { recievedPhylogeny } />}
                     </div>
                     <div className={cytoscape_class} style={{height:'100%',width:'100%'}} id="cy">
                         { (networkLoading === true) && <Loading progress = "Fetching Network..."/> }

@@ -5,6 +5,7 @@ import cise from 'cytoscape-cise';
 class Cyto extends React.Component{
     constructor(props){
         super(props);
+        this.cytoRef = React.createRef();
         this.renderCytoscapeElement = this.renderCytoscapeElement.bind(this);
     }
 
@@ -12,7 +13,7 @@ class Cyto extends React.Component{
         cytoscape.use(cise);
         this.cy = cytoscape(
         {
-            container: document.getElementById('cy'),
+            container: this.cytoRef.current,
 
             animate: true, // Whether to show the layout as it's running
             ready: undefined, // Callback on layoutready
@@ -61,8 +62,7 @@ class Cyto extends React.Component{
 
     render() {
     return (
-        <div>
-        </div>
+        <div ref={this.cytoRef} style={{height:'100%', width:'100%'}}></div>
     );
     }
 }

@@ -6,15 +6,7 @@ const config = {
   hoverLabel: true,
   lineWidth: 3,
   branchColour: 'rgb(70, 130, 180)',
-  branchScalar: 248236.77642023106,
-  initialBranchScalar: 248236.77642023106,
-  offsetx: 50,
-  offsety: 128.87783314895623,
-  farthestNodeFromRootX: 971,
-  farthestNodeFromRootY: 856.1904761904765
 };
-
-var count = 0
 
 class Phylo extends React.Component{
     constructor(props){
@@ -44,7 +36,6 @@ class Phylo extends React.Component{
               }
           });
           this.tree.draw(true);
-          console.log(this.tree)
           index++;
         } else {
             index++;
@@ -56,10 +47,9 @@ class Phylo extends React.Component{
       this.renderPylocanvasElement();
     };
 
-    componentDidUpdate(){
-      if (count===0) {
+    componentDidUpdate(prevProps){
+      if (prevProps.phylogeny !== this.props.phylogeny) {
         this.renderPylocanvasElement();
-        count += 1
       };
     };
 

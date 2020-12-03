@@ -27,7 +27,11 @@ function Statistics(props) {
                         <p className="tab" id="italics"> {props.display.species}</p>
                         <p>Cluster ID:</p>
                         <p className="tab">{props.display.query}</p>
-                        <p>Prevalence:</p>
+                        <p>Aliases:</p>
+                            {Object.entries(props.display.aliases)
+                                .map( ([key, value]) => <p className="tab">{key + ': ' + value}</p> )
+                            }
+                        <p>Cluster prevalence:</p>
                         <p className="tab">{props.display.prev}</p>
                         <Button className='download-button' variant="outline-primary" onClick={ handleSaveToPC.bind(null, props.sketch) } >Download sketch</Button>
                     </h5>

@@ -1,16 +1,38 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Introduction
 
-## Available Scripts
+This repository holds the source code for the PopPUNK-web application. PopPUNK-web makes use of WebAssembly for in-browser, client-side k-mer sketching, and a Python backend for query assignment and generation of visualisations. As we make use of several languages in a single pipeline, there are a few considerations for development purposes.
 
-In the project directory, you can run:
+## Testing
 
-### `npm start`
+To locally host PopPUNK-web in development mode at http://localhost:3000, run:
+```
+git clone https://github.com/johnlees/PopPUNK-web
+cd PopPUNK-web
+npm start
+```
+To test the backend, ensure PopPUNK is installed (https://github.com/johnlees/PopPUNK), open a second terminal and run the Python API using:
+```
+git clone https://github.com/johnlees/PopPUNK
+cd PopPUNK
+python poppunk_api-runner.py
+```
+This will run a development server at http://localhost:5000. As this port (5000) is different to that running the frontend (3000), you must specify a proxy in PopPUNK-web so the frontend and backend can communicate. This can be done by adding the following line to ```package.json```:
+```
+"proxy": "http://localhost:5000"
+```
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Compiling the WebAssembly
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+The sketching code is based in C++ and can be found at https://github.com/johnlees/pp-sketchlib. To compile the files necessary for web sketching, you will need to download and activate an emsdk environment, then compile using emscripten (https://emscripten.org/index.html). This can be done by running:
+```
+# Get the emsdk and pp-sketchlib repos
+git clone https://github.com/emscripten-core/emsdk.git
+git clone https://github.com/johnlees/pp-sketchlib
+source ./emsdk/emsdk_env.sh
+./emsdk/emsdk activate latest
+cd pp-sketchlib/src && make web
+```
+This will build “web_sketch.js” and “web_sketch.wasm” in the web subdirectory of pp-sketchlib/src. These files can then be read by PopPUNK-web when placed in the public directory of the bundle.
 
 ### `npm test`
 
@@ -26,43 +48,3 @@ The build is minified and the filenames include the hashes.<br />
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify

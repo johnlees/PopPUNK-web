@@ -26,7 +26,7 @@ const DropZone = ({ onDrop }) => {
             </div>
             <div className="description-text">
               <p id="description-header-font">What pathogens are supported?</p>
-              <div id="description-font">SARS-CoV-2, Influenza and Pneumococcus sequences are currently supported.</div>
+              <div id="description-font">Streptococcus pneumoniae sequences are currently supported.</div>
             </div>
           </>
         </div>

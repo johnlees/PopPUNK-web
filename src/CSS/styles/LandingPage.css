@@ -9,7 +9,7 @@
     display: inline-grid;
     grid-template-columns: 50% 50%;
     padding: 1.5% 5% 0% 5%;
-    height: 600px;
+    height: 100%;
     width: 100%
 }
 

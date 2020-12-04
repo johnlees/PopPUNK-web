@@ -18,7 +18,7 @@ class Plots extends React.Component{
         var data = [trace];
         var layout = {
             xaxis: {
-                title: "Cluster ID",
+                title: "Strain ID",
                 type: "category"
             },
             yaxis: {

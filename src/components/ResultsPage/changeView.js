@@ -104,7 +104,7 @@ function ChangeView(props) {
                     </Nav.Link>
                     <Nav.Link className={"nav-link" + (showPlots ? '-active' : '')} id={"navbar-font" + (showPlots ? '-active' : '')}  onClick={ onPlots }>
                         <img style={{height:"35px",width:"35px"}} src={(showPlots ? DarkChartIcon:LightChartIcon)} alt="plot-icon"/>
-                        Cluster Prevalences
+                        Strain Prevalences
                     </Nav.Link>
                     <Nav.Link className={"nav-link" + (showMicroreact ? '-active' : '')} id={"navbar-font" + (showMicroreact ? '-active' : '')}  onClick={ onMicrorreact }>
                         <img style={{height:"35px",width:"35px"}} src={(showMicroreact ? DarkMicroIcon:LightMicroIcon)} alt="microreact-icon"/>
@@ -112,11 +112,11 @@ function ChangeView(props) {
                     </Nav.Link>
                     <Nav.Link className={"nav-link" + (showPhylo ? '-active' : '')} id={"navbar-font" + (showPhylo ? '-active' : '')}  onClick={ onPhylo }>
                         <img style={{height:"35px",width:"35px"}} src={(showPhylo ? DarkTreeIcon:LightTreeIcon)} alt="phylo-icon"/>
-                        Cluster Phylogeny
+                        Within-Strain Phylogeny
                     </Nav.Link>
                     <Nav.Link className={"nav-link" + (showCytoscape ? '-active' : '')} id={"navbar-font" + (showCytoscape ? '-active' : '')}  onClick={ onCytoscape }>
                         <img style={{height:"35px",width:"35px"}} src={(showCytoscape ? DarkNetworkIcon:LightNetworkIcon)} alt="cyto-icon"/>
-                        Cluster Network
+                        Within-Strain Network
                     </Nav.Link>
                 </Nav>
                 </Navbar.Collapse>

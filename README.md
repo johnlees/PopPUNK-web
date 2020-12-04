@@ -8,6 +8,7 @@ To locally host PopPUNK-web in development mode at http://localhost:3000, run:
 ```
 git clone https://github.com/johnlees/PopPUNK-web
 cd PopPUNK-web
+npm install
 npm start
 ```
 To test the backend, ensure PopPUNK is installed (https://github.com/johnlees/PopPUNK), open a second terminal and run the Python API using:

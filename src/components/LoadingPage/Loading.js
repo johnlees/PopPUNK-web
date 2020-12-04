@@ -7,7 +7,7 @@ class Loading extends React.Component {
         <>
             <div className="loader-container">
                 <img className='custom-loader' src={Spinner} alt="Spinner"/>
-                <div id='loader-font' className='progress-text'>{this.props.progress} </div>
+                <div id='loader-font' className='progress-text' style={{fontSize:(this.props.CanvasHeight*0.024597919 + "px")}}>{this.props.progress} </div>
             </div>
         </>
     )};

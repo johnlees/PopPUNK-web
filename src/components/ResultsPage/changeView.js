@@ -98,27 +98,27 @@ function ChangeView(props) {
     };
     return (
         <div className={resultContainer_class}>
-            <Navbar className="custom-navbar" style={{height:((props.CanvasHeight*0.07)+"px")}}expand="lg">
+            <Navbar className="custom-navbar" style={{height:((props.CanvasHeight*0.065)+"px")}}expand="lg">
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                 <Nav >
-                    <Nav.Link className={"nav-link" + (showStats ? '-active' : '')} id={"navbar-font" + (showStats ? '-active' : '')} onClick={ onStats }>
+                    <Nav.Link className={"nav-link" + (showStats ? '-active' : '')} style={{fontSize:(props.CanvasHeight*0.016 + "px")}} id={"navbar-font" + (showStats ? '-active' : '')} onClick={ onStats }>
                         <img style={{height:((props.CanvasHeight*0.039877301)+"px"),width:((props.CanvasHeight*0.039877301)+"px")}} src={(showStats ? DarkStatsIcon:LightStatsIcon)} alt="stats-icon"/>
                         Metrics
                     </Nav.Link>
-                    <Nav.Link className={"nav-link" + (showPlots ? '-active' : '')} id={"navbar-font" + (showPlots ? '-active' : '')}  onClick={ onPlots }>
+                    <Nav.Link className={"nav-link" + (showPlots ? '-active' : '')} style={{fontSize:(props.CanvasHeight*0.016 + "px")}} id={"navbar-font" + (showPlots ? '-active' : '')}  onClick={ onPlots }>
                         <img style={{height:((props.CanvasHeight*0.039877301)+"px"),width:((props.CanvasHeight*0.039877301)+"px")}} src={(showPlots ? DarkChartIcon:LightChartIcon)} alt="plot-icon"/>
                         Strain Prevalences
                     </Nav.Link>
-                    <Nav.Link className={"nav-link" + (showMicroreact ? '-active' : '')} id={"navbar-font" + (showMicroreact ? '-active' : '')}  onClick={ onMicrorreact }>
+                    <Nav.Link className={"nav-link" + (showMicroreact ? '-active' : '')} style={{fontSize:(props.CanvasHeight*0.016 + "px")}} id={"navbar-font" + (showMicroreact ? '-active' : '')}  onClick={ onMicrorreact }>
                         <img style={{height:((props.CanvasHeight*0.039877301)+"px"),width:((props.CanvasHeight*0.039877301)+"px")}} src={(showMicroreact ? DarkMicroIcon:LightMicroIcon)} alt="microreact-icon"/>
                         Population Phylogeny
                     </Nav.Link>
-                    <Nav.Link className={"nav-link" + (showPhylo ? '-active' : '')} id={"navbar-font" + (showPhylo ? '-active' : '')}  onClick={ onPhylo }>
+                    <Nav.Link className={"nav-link" + (showPhylo ? '-active' : '')} style={{fontSize:(props.CanvasHeight*0.016 + "px")}} id={"navbar-font" + (showPhylo ? '-active' : '')}  onClick={ onPhylo }>
                         <img style={{height:((props.CanvasHeight*0.039877301)+"px"),width:((props.CanvasHeight*0.039877301)+"px")}} src={(showPhylo ? DarkTreeIcon:LightTreeIcon)} alt="phylo-icon"/>
                         Within-Strain Phylogeny
                     </Nav.Link>
-                    <Nav.Link className={"nav-link" + (showCytoscape ? '-active' : '')} id={"navbar-font" + (showCytoscape ? '-active' : '')}  onClick={ onCytoscape }>
+                    <Nav.Link className={"nav-link" + (showCytoscape ? '-active' : '')} style={{fontSize:(props.CanvasHeight*0.016 + "px")}} id={"navbar-font" + (showCytoscape ? '-active' : '')}  onClick={ onCytoscape }>
                         <img style={{height:((props.CanvasHeight*0.039877301)+"px"),width:((props.CanvasHeight*0.039877301)+"px")}} src={(showCytoscape ? DarkNetworkIcon:LightNetworkIcon)} alt="cyto-icon"/>
                         Within-Strain Network
                     </Nav.Link>
@@ -128,7 +128,7 @@ function ChangeView(props) {
             <div className={displayContainer_class}>
                 <>
                     <div className={stats_class} style={{ height: props.CanvasHeight*0.530008357}}>
-                        <Stats display={ props.display } sketch={ props.sketch }/>
+                        <Stats display={ props.display } sketch={ props.sketch } CanvasHeight={ props.CanvasHeight }/>
                     </div>
                     <div className={plot_class} style={{ height: props.CanvasHeight*0.530008357}}>
                         <Plots display={ props.display } />

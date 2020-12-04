@@ -72,35 +72,35 @@ return (
       <>
         <div className="flexbox-container" style={{height: (windowHeight*0.12 + "px"), width: windowWidth + "px"}}>
           <img className='logo' src={PopPUNKLogo} alt="PopPUNK logo"/>
-          <div id="title-font" className="title">Lineage Assignment</div>
-          <Button style={{ marginLeft: "auto", padding: "0% 5% 0% 0%" }} id="home-link" href="https://poppunk.net/" variant="link">Return to PopPUNK homepage</Button>
+          <div id="title-font" className="title" style={{fontSize:(windowHeight*0.040681173 + "px")}}>Lineage Assignment</div>
+          <Button style={{ marginLeft: "auto", padding: "0% 5% 0% 0%", fontSize:(windowHeight*0.017975402 + "px")}} id="home-link" href="https://poppunk.net/" variant="link">Return to PopPUNK homepage</Button>
         </div>
         <div>
             { (display === null &&  loading === false) &&
             <div className="content-container" style={{height: (windowHeight*0.6 + "px"), width: windowWidth + "px"}} >
-              <DropZone onDrop = { onDrop } /> }
+              <DropZone onDrop={ onDrop } CanvasHeight={ windowHeight } />
             </div> }
             { (display === null &&  loading === true) &&
             <div className="content-container" style={{height: (windowHeight*0.6 + "px"), width: windowWidth + "px"}} >
-              <Loading progress = { progress }/> }
+              <Loading progress = { progress } CanvasHeight={ windowHeight }/>
             </div> }
             { display && <ChangeView display = { display } sketch = { sketchResult } CanvasWidth={ windowWidth } CanvasHeight={ windowHeight }/> }
           <div className="funder-container" style={{height: (windowHeight*0.07 + "px"), width: windowWidth + "px"}}>
-            <div id="funder-font" className="funder-logos">
+            <div id="funder-font" className="funder-logos" style={{fontSize:(windowHeight*0.017975402 + "px")}}>
               <a>Gratefully funded by:</a>
               <img className="MF-logo" src={MFLogo} alt="PopPUNK logo"/>
               <img className="Wellcome-logo" src={WellcomeLogo} alt="PopPUNK logo"/>
               <img className="MRC-logo" src={MRCLogo} alt="PopPUNK logo"/>
             </div>
           </div>
-          <div id="footer-font" className="footer-links">
+          <div id="footer-font" className="footer-links" style={{fontSize:(windowHeight*0.014191107 + "px")}}>
               <ul>
                 <a className="link" href="mailto:poppunk@poppunk.net">Contact</a>
                 <a> | </a>
                 <a className="link" href="https://github.com/johnlees/PopPUNK/issues">Report issues</a>
               </ul>
             </div>
-          <p className="credits"> PopPUNK-web was developed by Daniel Anderson, John Lees and Nicholas Croucher</p>
+          <p className="credits" style={{fontSize:(windowHeight*0.017975402 + "px")}}> PopPUNK-web was developed by Daniel Anderson, John Lees and Nicholas Croucher</p>
         </div>
       </>
     </main>

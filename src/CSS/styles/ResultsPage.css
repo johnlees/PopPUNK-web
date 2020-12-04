@@ -105,14 +105,12 @@
 .show-Phylo {
     position: relative;
     width: 100%;
-    height: 95%;
     justify-content: center;
 }
 
 .hide-Phylo {
     position: relative;
     width: 100%;
-    height: 100%;
     display: none;
     justify-content: center;
 }
@@ -120,14 +118,12 @@
 .show-Microreact {
     position: relative;
     width: 100%;
-    height: 90%;
     justify-content: center;
 }
 
 .hide-Microreact {
     position: relative;
     width: 100%;
-    height: 90%;
     display: none;
     justify-content: center;
 }
@@ -162,7 +158,7 @@
 }
 
 .padding-tab {
-    padding: 2% 0% 0% 3%;
+    padding: 1% 0% 0% 3%;
 }
 
 .tab {

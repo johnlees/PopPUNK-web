@@ -20,6 +20,8 @@ import LightTreeIcon from './icons/noun_Binary tree_light.png'
 import DarkNetworkIcon from './icons/noun_Network_dark.png'
 import LightNetworkIcon from './icons/noun_Network_light.png'
 
+let count = 0
+
 function ChangeView(props) {
 
     const [showStats, setShowStats] = useState(true)
@@ -80,21 +82,26 @@ function ChangeView(props) {
     const resultContainer_class = (showMicroreact || showCytoscape || showPhylo) ? "extended-result-container" : "result-container"
     const displayContainer_class = (showMicroreact || showCytoscape || showPhylo) ? "extended-display-container" : "display-container"
 
-    window.Worker[1].postMessage(props.sketch.species);
-    window.Worker[1].onmessage = function(NetEvent){
-        if (networkLoading===true && recievedNetwork==null && (typeof NetEvent.data === "string")) {
-            const response = JSON.parse(NetEvent.data);
-            if (typeof response.phylogeny === "string") {
-                setNetwork(response.network);
-                setPhylogeny(response.phylogeny);
-                setNetworkLoading(false);
+    const NavbarHeight = (showMicroreact || showCytoscape || showPhylo) ? props.CanvasHeight*0.110770279 : props.CanvasHeight*0.6646216769
+
+    if (count === 0) {
+        window.Worker[1].postMessage(props.sketch.species);
+        window.Worker[1].onmessage = function(NetEvent){
+            if (networkLoading===true && recievedNetwork==null && (typeof NetEvent.data === "string")) {
+                const response = JSON.parse(NetEvent.data);
+                if (typeof response.phylogeny === "string") {
+                    setNetwork(response.network);
+                    setPhylogeny(response.phylogeny);
+                    setNetworkLoading(false);
+                    count += 1
+                };
             };
         };
     };
 
     return (
         <div className={resultContainer_class}>
-            <Navbar className="custom-navbar" expand="lg">
+            <Navbar className="custom-navbar" style={{height:{NavbarHeight}+"px"}}expand="lg">
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                 <Nav >
@@ -127,10 +134,10 @@ function ChangeView(props) {
                         <Stats display={ props.display } sketch={ props.sketch }/>
                     </div>
                     <div className={plot_class}>
-                        <Plots display={ props.display }/>
+                        <Plots display={ props.display } />
                     </div>
                     <div className={microreact_class}>
-                        <Microreact URL={ props.display.microreactUrl }/>
+                        <Microreact URL={ props.display.microreactUrl } />
                     </div>
                     <div className={phylo_class}>
                         { (networkLoading === true) && <Loading progress = "Fetching Cluster Phylogeny..."/> }

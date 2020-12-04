@@ -36,7 +36,7 @@
   width: 100%;
   display: flex;
   justify-content: center;
-  padding: 1% 0% 0% 0%;
+  align-items: 'center';
 }
 
 .link { color: #8F8F8F; }
@@ -48,7 +48,7 @@
   flex-direction: inline-block;
   justify-content: center;
   align-items: center;
-  padding: 1.5% 0% 0% 0%;
+  margin-top: 1.2%;
 }
 
 .funder-logos {
@@ -65,19 +65,33 @@
   position: relative;
   height: 70%;
   max-width: 100%;
-  padding: 1% 0% 0% 0.6%;
+  padding: 0% 0% 0% 0.6%;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
 .Wellcome-logo {
   position: relative;
   height: 100%;
   max-width: 100%;
-  padding: 0.6% 0% 0% 0.6%;
+  padding: 0% 0% 0% 0.6%;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
 .MRC-logo {
   position: relative;
   height: 85%;
   max-width: 100%;
-  padding: 0.6% 0% 0% 0.6%;
+  padding: 0% 0% 0% 0.6%;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.credits{
+  text-align: center;
+}
+
+ul{
+  margin: 0.3% 0% 0.3% 0%;
 }

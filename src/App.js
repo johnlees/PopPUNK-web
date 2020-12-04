@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import DropZone from './components/LandingPage/DropZone';
 import Loading from './components/LoadingPage/Loading'
-import ClusterResult from './components/ResultsPage/Results'
+import ChangeView from './components/ResultsPage/changeView'
 
 import PopPUNKLogo from './components/LandingPage/PopPUNKLogo.png';
 import MFLogo from './components/LandingPage/MFLogo.png';
@@ -23,8 +23,8 @@ function App() {
   const [windowHeight, setHeight] = useState(window.outerHeight)
 
   const updateDimensions = () => {
-    setWidth(window.innerWidth);
-    setHeight(window.innerHeight);
+    setWidth(window.outerWidth);
+    setHeight(window.outerHeight);
   };
 
   useEffect(() => {
@@ -67,8 +67,9 @@ function App() {
   };
 }, [setLoading, setStage, setSketch, setCluster]); //Recieve sketch, post to Flask and recieve response from Flask
 
+console.log(windowHeight)
 return (
-    <main className='App' style={{height: windowWidth + "px", width: windowHeight + " px"}}>
+    <main className='App' style={{height: windowHeight + "px", width: windowWidth + " px"}}>
       <>
         <div className="flexbox-container" style={{height: (windowHeight*0.12 + "px"), width: windowWidth + "px"}}>
           <img className='logo' src={PopPUNKLogo} alt="PopPUNK logo"/>
@@ -79,9 +80,9 @@ return (
           <div className="content-container" style={{height: (windowHeight*0.6 + "px"), width: windowWidth + "px"}}>
             { (display === null &&  loading === false) && <DropZone onDrop = { onDrop } /> }
             { (display === null &&  loading === true) &&  <Loading progress = { progress }/> }
-            { display && <ClusterResult display = { display } sketch = { sketchResult }/> }
+            { display && <ChangeView display = { display } sketch = { sketchResult } CanvasWidth={ windowWidth } canvasHeight={ windowHeight }/> }
           </div>
-          <div className="funder-container" style={{height: (windowHeight*0.11 + "px"), width: windowWidth + "px"}}>
+          <div className="funder-container" style={{height: (windowHeight*0.07 + "px"), width: windowWidth + "px"}}>
             <div id="funder-font" className="funder-logos">
               <a>Gratefully funded by:</a>
               <img className="MF-logo" src={MFLogo} alt="PopPUNK logo"/>
@@ -96,7 +97,7 @@ return (
                 <a className="link" href="https://github.com/johnlees/PopPUNK/issues">Report issues</a>
               </ul>
             </div>
-          <p className="text-center"> PopPUNK-web was developed by Daniel Anderson, John Lees and Nicholas Croucher</p>
+          <p className="credits"> PopPUNK-web was developed by Daniel Anderson, John Lees and Nicholas Croucher</p>
         </div>
       </>
     </main>

@@ -32,8 +32,6 @@ class Plots extends React.Component{
                 b:50,
                 t:0,
                 pad: 0},
-            height: 550,
-            width: 1350
         };
         Plotly.newPlot(this.PlotlyRef.current, data, layout, {scrollZoom: true, displayModeBar: false, responsive: true});
     };
@@ -50,7 +48,7 @@ class Plots extends React.Component{
 
     render() {
         return (
-            <div ref={this.PlotlyRef} style={{height:'95%'}}></div>
+            <div ref={this.PlotlyRef} style={{height:'90%', width:'95%', marginLeft: "auto", marginRight: "auto", marginTop: "auto", marginBottom: "auto"}}></div>
         );
     };
 };

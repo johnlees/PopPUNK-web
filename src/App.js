@@ -67,7 +67,6 @@ function App() {
   };
 }, [setLoading, setStage, setSketch, setCluster]); //Recieve sketch, post to Flask and recieve response from Flask
 
-console.log(windowHeight)
 return (
     <main className='App' style={{height: windowHeight + "px", width: windowWidth + " px"}}>
       <>
@@ -77,11 +76,15 @@ return (
           <Button style={{ marginLeft: "auto", padding: "0% 5% 0% 0%" }} id="home-link" href="https://poppunk.net/" variant="link">Return to PopPUNK homepage</Button>
         </div>
         <div>
-          <div className="content-container" style={{height: (windowHeight*0.6 + "px"), width: windowWidth + "px"}}>
-            { (display === null &&  loading === false) && <DropZone onDrop = { onDrop } /> }
-            { (display === null &&  loading === true) &&  <Loading progress = { progress }/> }
-            { display && <ChangeView display = { display } sketch = { sketchResult } CanvasWidth={ windowWidth } canvasHeight={ windowHeight }/> }
-          </div>
+            { (display === null &&  loading === false) &&
+            <div className="content-container" style={{height: (windowHeight*0.6 + "px"), width: windowWidth + "px"}} >
+              <DropZone onDrop = { onDrop } /> }
+            </div> }
+            { (display === null &&  loading === true) &&
+            <div className="content-container" style={{height: (windowHeight*0.6 + "px"), width: windowWidth + "px"}} >
+              <Loading progress = { progress }/> }
+            </div> }
+            { display && <ChangeView display = { display } sketch = { sketchResult } CanvasWidth={ windowWidth } CanvasHeight={ windowHeight }/> }
           <div className="funder-container" style={{height: (windowHeight*0.07 + "px"), width: windowWidth + "px"}}>
             <div id="funder-font" className="funder-logos">
               <a>Gratefully funded by:</a>

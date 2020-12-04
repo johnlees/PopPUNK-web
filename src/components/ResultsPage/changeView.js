@@ -82,8 +82,6 @@ function ChangeView(props) {
     const resultContainer_class = (showMicroreact || showCytoscape || showPhylo) ? "extended-result-container" : "result-container"
     const displayContainer_class = (showMicroreact || showCytoscape || showPhylo) ? "extended-display-container" : "display-container"
 
-    const NavbarHeight = (showMicroreact || showCytoscape || showPhylo) ? props.CanvasHeight*0.110770279 : props.CanvasHeight*0.6646216769
-
     if (count === 0) {
         window.Worker[1].postMessage(props.sketch.species);
         window.Worker[1].onmessage = function(NetEvent){
@@ -98,31 +96,30 @@ function ChangeView(props) {
             };
         };
     };
-
     return (
         <div className={resultContainer_class}>
-            <Navbar className="custom-navbar" style={{height:{NavbarHeight}+"px"}}expand="lg">
+            <Navbar className="custom-navbar" style={{height:((props.CanvasHeight*0.07)+"px")}}expand="lg">
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                 <Nav >
                     <Nav.Link className={"nav-link" + (showStats ? '-active' : '')} id={"navbar-font" + (showStats ? '-active' : '')} onClick={ onStats }>
-                        <img style={{height:"35px",width:"35px"}} src={(showStats ? DarkStatsIcon:LightStatsIcon)} alt="stats-icon"/>
+                        <img style={{height:((props.CanvasHeight*0.039877301)+"px"),width:((props.CanvasHeight*0.039877301)+"px")}} src={(showStats ? DarkStatsIcon:LightStatsIcon)} alt="stats-icon"/>
                         Metrics
                     </Nav.Link>
                     <Nav.Link className={"nav-link" + (showPlots ? '-active' : '')} id={"navbar-font" + (showPlots ? '-active' : '')}  onClick={ onPlots }>
-                        <img style={{height:"35px",width:"35px"}} src={(showPlots ? DarkChartIcon:LightChartIcon)} alt="plot-icon"/>
+                        <img style={{height:((props.CanvasHeight*0.039877301)+"px"),width:((props.CanvasHeight*0.039877301)+"px")}} src={(showPlots ? DarkChartIcon:LightChartIcon)} alt="plot-icon"/>
                         Strain Prevalences
                     </Nav.Link>
                     <Nav.Link className={"nav-link" + (showMicroreact ? '-active' : '')} id={"navbar-font" + (showMicroreact ? '-active' : '')}  onClick={ onMicrorreact }>
-                        <img style={{height:"35px",width:"35px"}} src={(showMicroreact ? DarkMicroIcon:LightMicroIcon)} alt="microreact-icon"/>
+                        <img style={{height:((props.CanvasHeight*0.039877301)+"px"),width:((props.CanvasHeight*0.039877301)+"px")}} src={(showMicroreact ? DarkMicroIcon:LightMicroIcon)} alt="microreact-icon"/>
                         Population Phylogeny
                     </Nav.Link>
                     <Nav.Link className={"nav-link" + (showPhylo ? '-active' : '')} id={"navbar-font" + (showPhylo ? '-active' : '')}  onClick={ onPhylo }>
-                        <img style={{height:"35px",width:"35px"}} src={(showPhylo ? DarkTreeIcon:LightTreeIcon)} alt="phylo-icon"/>
+                        <img style={{height:((props.CanvasHeight*0.039877301)+"px"),width:((props.CanvasHeight*0.039877301)+"px")}} src={(showPhylo ? DarkTreeIcon:LightTreeIcon)} alt="phylo-icon"/>
                         Within-Strain Phylogeny
                     </Nav.Link>
                     <Nav.Link className={"nav-link" + (showCytoscape ? '-active' : '')} id={"navbar-font" + (showCytoscape ? '-active' : '')}  onClick={ onCytoscape }>
-                        <img style={{height:"35px",width:"35px"}} src={(showCytoscape ? DarkNetworkIcon:LightNetworkIcon)} alt="cyto-icon"/>
+                        <img style={{height:((props.CanvasHeight*0.039877301)+"px"),width:((props.CanvasHeight*0.039877301)+"px")}} src={(showCytoscape ? DarkNetworkIcon:LightNetworkIcon)} alt="cyto-icon"/>
                         Within-Strain Network
                     </Nav.Link>
                 </Nav>
@@ -130,20 +127,20 @@ function ChangeView(props) {
             </Navbar >
             <div className={displayContainer_class}>
                 <>
-                    <div className={stats_class}>
+                    <div className={stats_class} style={{ height: props.CanvasHeight*0.530008357}}>
                         <Stats display={ props.display } sketch={ props.sketch }/>
                     </div>
-                    <div className={plot_class}>
+                    <div className={plot_class} style={{ height: props.CanvasHeight*0.530008357}}>
                         <Plots display={ props.display } />
                     </div>
-                    <div className={microreact_class}>
+                    <div className={microreact_class} style={{ height: props.CanvasHeight*0.9}}>
                         <Microreact URL={ props.display.microreactUrl } />
                     </div>
-                    <div className={phylo_class}>
+                    <div className={phylo_class} style={{ height: props.CanvasHeight*0.9}}>
                         { (networkLoading === true) && <Loading progress = "Fetching Cluster Phylogeny..."/> }
                         { (networkLoading === false && showPhylo === true) && <Tree phylogeny = { recievedPhylogeny } />}
                     </div>
-                    <div className={cytoscape_class} style={{height:'100%',width:'100%'}} id="cy">
+                    <div className={cytoscape_class} style={{ height: props.CanvasHeight*0.9}}>
                         { (networkLoading === true) && <Loading progress = "Fetching Network..."/> }
                         { (networkLoading === false) && <Network network = { recievedNetwork }/> }
                     </div>

@@ -89,7 +89,6 @@
     margin-right: auto;
 }
 
-
 .hide-Plots {
     position: relative;
     width: 100%;
@@ -152,6 +151,7 @@
     background-color: #a3c2db;
     border: 0.1px solid #a3c2db;
     border: 1px ridge rgba(70,130,180,0.23);
+    height:90%;
     border-radius: 6px;
 }
 

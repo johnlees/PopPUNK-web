@@ -6,6 +6,7 @@ class Cyto extends React.Component{
     constructor(props){
         super(props);
         this.cytoRef = React.createRef();
+        this.queryNode = "n" + (this.props.network.elements.nodes.length - 1)
         this.renderCytoscapeElement = this.renderCytoscapeElement.bind(this);
     }
 
@@ -39,11 +40,15 @@ class Cyto extends React.Component{
                 .css({'text-opacity': 0.5,
                 'text-valign': 'center',
                 'text-halign': 'right',
-                'background-color': "#ff6666",
+                'background-color': "red",
                 'border-color': "#bfbfbf",
                 'border-width': "1",
                 'border-style': "solid"
-                }),
+                })
+                .selector('edge[source = "' + this.queryNode + '"]')
+                .css({"line-color": "red"})
+                .selector('edge[target = "' + this.queryNode + '"]')
+                .css({"line-color": "red"}),
             elements: this.props.network.elements,
             layout: { name: 'cise' }
             });

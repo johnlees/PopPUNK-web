@@ -138,7 +138,8 @@ function ChangeView(props) {
                     </div>
                     <div className={phylo_class} style={{ height: props.CanvasHeight*0.9}}>
                         { (networkLoading === true) && <Loading progress = "Fetching Cluster Phylogeny..."/> }
-                        { (networkLoading === false && showPhylo === true) && <Tree phylogeny = { recievedPhylogeny } />}
+                        { (networkLoading === false && showPhylo === true && recievedPhylogeny !== "A tree cannot be built with fewer than 3 samples.") && <Tree phylogeny = { recievedPhylogeny } />}
+                        { (networkLoading === false && showPhylo === true && recievedPhylogeny === "A tree cannot be built with fewer than 3 samples.") && <div className="text-center" style={{fontSize:(props.CanvasHeight*0.028382214 + "px")}}>{ recievedPhylogeny }</div>}
                     </div>
                     <div className={cytoscape_class} style={{ height: props.CanvasHeight*0.9}}>
                         { (networkLoading === true) && <Loading progress = "Fetching Network..."/> }

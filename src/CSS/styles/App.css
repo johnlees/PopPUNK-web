@@ -1,23 +1,12 @@
-App {
-  max-width: 10000px;
-  max-height: 10000px;
-}
-
 .app-container {
   width: 100%;
   height: 100%;
   background-color: #F7F7F7;
 }
 
-.content-container {
-  min-height: 650px;
-}
-
 .flexbox-container {
   display: flex;
   flex-direction: row;
-  height: 120px;
-  max-width: 100%;
   justify-content: center;
   align-items: center;
   background-color:#4682B4;
@@ -47,7 +36,7 @@ App {
   width: 100%;
   display: flex;
   justify-content: center;
-  padding: 1% 0% 0% 0%;
+  align-items: 'center';
 }
 
 .link { color: #8F8F8F; }
@@ -57,11 +46,9 @@ App {
   position: relative;
   display: flex;
   flex-direction: inline-block;
-  height: 105px;
-  width: 100%;
   justify-content: center;
   align-items: center;
-  padding: 0.7% 0% 0% 0%;
+  margin-top: 1.2%;
 }
 
 .funder-logos {
@@ -78,19 +65,33 @@ App {
   position: relative;
   height: 70%;
   max-width: 100%;
-  padding: 1% 0% 0% 0.6%;
+  padding: 0% 0% 0% 0.6%;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
 .Wellcome-logo {
   position: relative;
   height: 100%;
   max-width: 100%;
-  padding: 0.6% 0% 0% 0.6%;
+  padding: 0% 0% 0% 0.6%;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
 .MRC-logo {
   position: relative;
   height: 85%;
   max-width: 100%;
-  padding: 0.6% 0% 0% 0.6%;
+  padding: 0% 0% 0% 0.6%;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.credits{
+  text-align: center;
+}
+
+ul{
+  margin: 0.3% 0% 0.3% 0%;
 }

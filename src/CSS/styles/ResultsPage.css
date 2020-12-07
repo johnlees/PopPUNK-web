@@ -64,33 +64,30 @@
 }
 
 .extended-result-container {
-    height: 1000px;
+    height: 165%;
     max-width: 100%;
     background-color:#FFFFFF;
     margin: 0% 5% 0% 5%;
 }
 
 .display-container {
-    height: 585px;
+    height: 88.92297205%;
     width: 100%;
 }
 
 .extended-display-container {
-    height: 946px;
+    height: 100%;
     width: 100%;
 }
 
 .show-Plots {
     position: relative;
-    max-width: 100%;
-    height: 100%;
     display: flex;
-    justify-content: center;
-    align-content: center;
-    align-items: center;
-    justify-items: center;
+    height:100%;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
 }
-
 
 .hide-Plots {
     position: relative;
@@ -99,19 +96,21 @@
     display: none;
     flex-direction: row;
     justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    margin-bottom: auto;
 }
 
 .show-Phylo {
     position: relative;
     width: 100%;
-    height: 95%;
     justify-content: center;
 }
 
 .hide-Phylo {
     position: relative;
     width: 100%;
-    height: 100%;
     display: none;
     justify-content: center;
 }
@@ -119,14 +118,12 @@
 .show-Microreact {
     position: relative;
     width: 100%;
-    height: 100%;
     justify-content: center;
 }
 
 .hide-Microreact {
     position: relative;
     width: 100%;
-    height: 100%;
     display: none;
     justify-content: center;
 }
@@ -150,6 +147,7 @@
     background-color: #a3c2db;
     border: 0.1px solid #a3c2db;
     border: 1px ridge rgba(70,130,180,0.23);
+    height:90%;
     border-radius: 6px;
 }
 
@@ -157,11 +155,10 @@
     background-Color: #4682B4;
     border: 4px ridge rgba(70,130,180,0.23);
     border-radius: 3px 3px 0px 0px;
-    height: 65px;
 }
 
 .padding-tab {
-    padding: 2% 0% 0% 3%;
+    padding: 1% 0% 0% 3%;
 }
 
 .tab {

@@ -1,10 +1,10 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useState, useEffect } from "react";
 import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import DropZone from './components/LandingPage/DropZone';
 import Loading from './components/LoadingPage/Loading'
-import ClusterResult from './components/ResultsPage/Results'
+import ChangeView from './components/ResultsPage/changeView'
 
 import PopPUNKLogo from './components/LandingPage/PopPUNKLogo.png';
 import MFLogo from './components/LandingPage/MFLogo.png';
@@ -18,6 +18,19 @@ import './CSS/styles/ResultsPage.css';
 import './CSS/Fonts.css';
 
 function App() {
+
+  const [windowWidth, setWidth] = useState(window.outerWidth)
+  const [windowHeight, setHeight] = useState(window.outerHeight)
+
+  const updateDimensions = () => {
+    setWidth(window.outerWidth);
+    setHeight(window.outerHeight);
+  };
+
+  useEffect(() => {
+      window.addEventListener("resize", updateDimensions);
+      return () => window.removeEventListener("resize", updateDimensions);
+  }, []);
 
   const [loading, setLoading] = useState(false); //define loading state
   const [progress, setStage] = useState("Sketching..."); //define result state
@@ -55,34 +68,39 @@ function App() {
 }, [setLoading, setStage, setSketch, setCluster]); //Recieve sketch, post to Flask and recieve response from Flask
 
 return (
-    <main className='App'>
+    <main className='App' style={{height: windowHeight + "px", width: windowWidth + " px"}}>
       <>
-        <div className="flexbox-container">
+        <div className="flexbox-container" style={{height: (windowHeight*0.12 + "px"), width: windowWidth + "px"}}>
           <img className='logo' src={PopPUNKLogo} alt="PopPUNK logo"/>
-          <div id="title-font" className="title">Lineage Assignment</div>
-          <Button style={{ marginLeft: "auto", padding: "0% 5% 0% 0%" }} id="home-link" href="https://poppunk.net/" variant="link">Return to PopPUNK homepage</Button>
+          <div id="title-font" className="title" style={{fontSize:(windowHeight*0.040681173 + "px")}}>Lineage Assignment</div>
+          <Button style={{ marginLeft: "auto", padding: "0% 5% 0% 0%", fontSize:(windowHeight*0.017975402 + "px")}} id="home-link" href="https://poppunk.net/" variant="link">Return to PopPUNK homepage</Button>
         </div>
         <div>
-          <div className="content-container">
-            { (display === null &&  loading === false) && <DropZone onDrop = { onDrop } /> }
-            { (display === null &&  loading === true) &&  <Loading progress = { progress }/> }
-            { display && <ClusterResult display = { display } sketch = { sketchResult }/> }
-          </div>
-          <div className="funder-container">
-            <div id="funder-font" className="funder-logos">
+            { (display === null &&  loading === false) &&
+            <div className="content-container" style={{height: (windowHeight*0.6 + "px"), width: windowWidth + "px"}} >
+              <DropZone onDrop={ onDrop } CanvasHeight={ windowHeight } />
+            </div> }
+            { (display === null &&  loading === true) &&
+            <div className="content-container" style={{height: (windowHeight*0.6 + "px"), width: windowWidth + "px"}} >
+              <Loading progress = { progress } CanvasHeight={ windowHeight }/>
+            </div> }
+            { display && <ChangeView display = { display } sketch = { sketchResult } CanvasWidth={ windowWidth } CanvasHeight={ windowHeight }/> }
+          <div className="funder-container" style={{height: (windowHeight*0.07 + "px"), width: windowWidth + "px"}}>
+            <div id="funder-font" className="funder-logos" style={{fontSize:(windowHeight*0.017975402 + "px")}}>
               <a>Gratefully funded by:</a>
               <img className="MF-logo" src={MFLogo} alt="PopPUNK logo"/>
               <img className="Wellcome-logo" src={WellcomeLogo} alt="PopPUNK logo"/>
               <img className="MRC-logo" src={MRCLogo} alt="PopPUNK logo"/>
             </div>
           </div>
-          <div id="footer-font" className="footer-links">
+          <div id="footer-font" className="footer-links" style={{fontSize:(windowHeight*0.014191107 + "px")}}>
               <ul>
                 <a className="link" href="mailto:poppunk@poppunk.net">Contact</a>
                 <a> | </a>
                 <a className="link" href="https://github.com/johnlees/PopPUNK/issues">Report issues</a>
               </ul>
             </div>
+          <p className="credits" style={{fontSize:(windowHeight*0.017975402 + "px")}}> PopPUNK-web was developed by Daniel Anderson, John Lees and Nicholas Croucher</p>
         </div>
       </>
     </main>

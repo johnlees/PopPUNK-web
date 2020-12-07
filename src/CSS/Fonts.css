@@ -1,6 +1,5 @@
 #title-font {
   font-family: "Lucida Sans Unicode", "Lucida Grande", serif;
-  font-size: 43px;
   color: #F7F7F7;
   font-weight: normal;
   text-decoration: none;
@@ -11,7 +10,6 @@
 
 #description-header-font {
   font-family: "Lucida Sans Unicode", "Lucida Grande", serif;
-  font-size: 22px;
   word-spacing: 1px;
   font-weight: bold;
   color: #000000;
@@ -23,8 +21,6 @@
 
 #description-font {
   font-family: "Lucida Sans Unicode", "Lucida Grande", serif;
-  font-size: 19px;
-  word-spacing: 1px;
   color: #000000;
   font-weight: normal;
   text-decoration: none;
@@ -35,7 +31,6 @@
 
 #dropzone-inactive {
   font-family: "Lucida Sans Unicode", "Lucida Grande", serif;
-  font-size: 30px;
   word-spacing: -1.2px;
   color: #8F8F8F;
   font-weight: normal;
@@ -47,7 +42,6 @@
 
 #accepted-files {
   font-family: "Lucida Sans Unicode", "Lucida Grande", serif;
-  font-size: 20px;
   word-spacing: -1.2px;
   color: #8F8F8F;
   font-weight: normal;
@@ -59,7 +53,6 @@
 
 #dropzone-active {
   font-family: "Lucida Sans Unicode", "Lucida Grande", serif;
-  font-size: 30px;
   word-spacing: -1.2px;
   color: #000000;
   font-weight: normal;
@@ -71,7 +64,6 @@
 
 #loader-font {
   font-family: "Lucida Sans Unicode", "Lucida Grande", serif;
-  font-size: 26px;
   color: #000000;
   font-weight: normal;
   text-decoration: none;
@@ -82,8 +74,6 @@
 
 #footer-font {
   font-family: "Lucida Sans Unicode", "Lucida Grande", serif;
-  font-size: 15px;
-  word-spacing: -1.2px;
   color: #8F8F8F;
   font-weight: normal;
   text-decoration: none;
@@ -94,8 +84,6 @@
 
 #funder-font {
   font-family: "Lucida Sans Unicode", "Lucida Grande", serif;
-  font-size: 19px;
-  word-spacing: 1px;
   color: #000000;
   font-weight: normal;
   text-decoration: none;

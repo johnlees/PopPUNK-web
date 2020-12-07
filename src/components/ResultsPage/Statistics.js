@@ -33,7 +33,7 @@ function Statistics(props) {
                             }
                         <p style={{fontSize:(props.CanvasHeight*0.020813623 + "px")}}>Strain prevalence:</p>
                         <p className="tab" style={{fontSize:(props.CanvasHeight*0.020813623 + "px")}}>{props.display.prev}</p>
-                        <Button className='download-button' variant="outline-primary" onClick={ handleSaveToPC.bind(null, props.sketch) } style={{fontSize:(props.CanvasHeight*0.020813623 + "px")}}>
+                        <Button className='download-button' variant="outline-primary" onClick={ handleSaveToPC.bind(null, props.sketch) } style={{fontSize:(props.CanvasHeight*0.019 + "px")}}>
                             Download sketch
                         </Button>
                     </h5>

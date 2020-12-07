@@ -1,5 +1,6 @@
 import React from 'react';
 import Phylocanvas from 'phylocanvas'
+import scalebar from 'phylocanvas-plugin-scalebar';
 
 const config = {
   fillCanvas: true,
@@ -15,6 +16,7 @@ class Phylo extends React.Component{
         this.renderPylocanvasElement = this.renderPylocanvasElement.bind(this);
       };
     renderPylocanvasElement(){
+        Phylocanvas.plugin(scalebar);
         this.tree = Phylocanvas.createTree(this.phyloRef.current, config);
         this.tree.load(this.props.phylogeny);
         this.tree.setTreeType('rectangular');

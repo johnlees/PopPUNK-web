@@ -97,7 +97,7 @@ return (
               <ul>
                 <a className="link" href="mailto:poppunk@poppunk.net">Contact</a>
                 <a> | </a>
-                <a className="link" href="https://github.com/johnlees/PopPUNK/issues">Report issues</a>
+                <a className="link" href="https://github.com/johnlees/PopPUNK-web/issues">Report issues</a>
               </ul>
             </div>
           <p className="credits" style={{fontSize:(windowHeight*0.017975402 + "px")}}> PopPUNK-web was developed by Daniel Anderson, John Lees and Nicholas Croucher</p>

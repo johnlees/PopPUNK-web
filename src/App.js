@@ -48,7 +48,7 @@ function App() {
       const species = "S.pneumoniae";
       sketchObj.species = species;
       setSketch(sketchObj)
-      fetch("http://localhost:5000/upload", {
+      fetch("https://poppunk-api.azurewebsites.net:80/upload", {
         method: 'POST',
         mode: 'cors',
         headers : {
@@ -74,28 +74,29 @@ return (
           <Button style={{ marginLeft: "auto", padding: "0% 5% 0% 0%", fontSize:(windowHeight*0.017975402 + "px")}} id="home-link" href="https://poppunk.net/" variant="link">Return to PopPUNK homepage</Button>
         </div>
         <div>
-            { (display === null &&  loading === false) &&
-            <div className="content-container" style={{height: (windowHeight*0.6 + "px"), width: windowWidth + "px"}} >
-              <DropZone onDrop={ onDrop } CanvasHeight={ windowHeight } />
-            </div> }
-            { (display === null &&  loading === true) &&
-            <div className="content-container" style={{height: (windowHeight*0.6 + "px"), width: windowWidth + "px"}} >
-              <Loading progress = { progress } CanvasHeight={ windowHeight }/>
-            </div> }
-            { display && <ChangeView display = { display } sketch = { sketchResult } CanvasWidth={ windowWidth } CanvasHeight={ windowHeight }/> }
-          <div id="footer-font" className="footer-links" style={{fontSize:(windowHeight*0.014191107 + "px")}}>
-              <ul>
-                <a className="link" href="mailto:poppunk@poppunk.net">Contact</a> | <a className="link" href="https://github.com/johnlees/PopPUNK-web/issues">Report issues</a>
-              </ul>
-            </div>
+          { (display === null &&  loading === false) &&
+          <div className="content-container" style={{height: (windowHeight*0.6 + "px"), width: windowWidth + "px"}} >
+            <DropZone onDrop={ onDrop } CanvasHeight={ windowHeight } />
+          </div> }
+          { (display === null &&  loading === true) &&
+          <div className="content-container" style={{height: (windowHeight*0.6 + "px"), width: windowWidth + "px"}} >
+            <Loading progress = { progress } CanvasHeight={ windowHeight }/>
+          </div> }
+          { display && <ChangeView display = { display } sketch = { sketchResult } CanvasWidth={ windowWidth } CanvasHeight={ windowHeight }/> }
+
           <p className="credits" style={{fontSize:(windowHeight*0.017975402 + "px")}}> PopPUNK-web was developed by <a href="https://github.com/Danderson123">Daniel Anderson</a>, <a href="http://johnlees.me/">John Lees</a> and <a href="https://www.imperial.ac.uk/people/n.croucher">Nicholas Croucher</a></p>
           <p className="credits" style={{fontSize:(windowHeight*0.017975402 + "px")}}> With funding from:</p>
         </div>
         <div className="funder-container" style={{height: (windowHeight*0.07 + "px"), width: windowWidth + "px"}}>
-            <div id="funder-font" className="funder-logos" style={{fontSize:(windowHeight*0.017975402 + "px")}}>
-              <img className="MF-logo" src={FunderLogo} alt="Funded by Mozilla, MRC and Wellcome"/>
-            </div>
+          <div id="funder-font" className="funder-logos" style={{fontSize:(windowHeight*0.017975402 + "px")}}>
+            <img className="MF-logo" src={FunderLogo} alt="Funded by Mozilla, MRC and Wellcome"/>
           </div>
+        </div>
+        <div id="footer-font" className="footer-links" style={{fontSize:(windowHeight*0.014191107 + "px")}}>
+          <p>
+            <a className="link" href="mailto:poppunk@poppunk.net">Contact</a> | <a className="link" href="https://github.com/johnlees/PopPUNK-web/issues">Report issues</a>
+          </p>
+        </div>
       </>
     </main>
   );

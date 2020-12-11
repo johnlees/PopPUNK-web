@@ -1,3 +1,7 @@
+# PopPUNK-web
+
+![Azure Static Web Apps CI/CD](https://github.com/johnlees/PopPUNK-web/workflows/Azure%20Static%20Web%20Apps%20CI/CD/badge.svg?branch=master)
+
 ## Introduction
 
 This repository holds the source code for the PopPUNK-web application. PopPUNK-web makes use of WebAssembly for in-browser, client-side k-mer sketching, and a Python backend for query assignment and generation of visualisations. As we make use of several languages in a single pipeline, there are a few considerations for development purposes.
@@ -34,6 +38,8 @@ source ./emsdk/emsdk_env.sh
 cd pp-sketchlib/src && make web
 ```
 This will build “web_sketch.js” and “web_sketch.wasm” in pp-sketchlib/src/web. These files can then be read by PopPUNK-web when placed in the public directory of the PopPUNK-web bundle.
+
+## Create react app docs
 
 ### `npm test`
 

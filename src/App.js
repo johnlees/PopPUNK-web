@@ -7,9 +7,7 @@ import Loading from './components/LoadingPage/Loading'
 import ChangeView from './components/ResultsPage/changeView'
 
 import PopPUNKLogo from './components/LandingPage/PopPUNKLogo.png';
-import MFLogo from './components/LandingPage/MFLogo.png';
-import WellcomeLogo from './components/LandingPage/WellcomeLogo.png';
-import MRCLogo from './components/LandingPage/MRCLogo.png';
+import FunderLogo from './components/LandingPage/funder_logos.png'
 
 import './CSS/styles/App.css';
 import './CSS/styles/LandingPage.css';
@@ -85,23 +83,19 @@ return (
               <Loading progress = { progress } CanvasHeight={ windowHeight }/>
             </div> }
             { display && <ChangeView display = { display } sketch = { sketchResult } CanvasWidth={ windowWidth } CanvasHeight={ windowHeight }/> }
-          <div className="funder-container" style={{height: (windowHeight*0.07 + "px"), width: windowWidth + "px"}}>
-            <div id="funder-font" className="funder-logos" style={{fontSize:(windowHeight*0.017975402 + "px")}}>
-              <a>Gratefully funded by:</a>
-              <img className="MF-logo" src={MFLogo} alt="PopPUNK logo"/>
-              <img className="Wellcome-logo" src={WellcomeLogo} alt="PopPUNK logo"/>
-              <img className="MRC-logo" src={MRCLogo} alt="PopPUNK logo"/>
-            </div>
-          </div>
           <div id="footer-font" className="footer-links" style={{fontSize:(windowHeight*0.014191107 + "px")}}>
               <ul>
-                <a className="link" href="mailto:poppunk@poppunk.net">Contact</a>
-                <a> | </a>
-                <a className="link" href="https://github.com/johnlees/PopPUNK-web/issues">Report issues</a>
+                <a className="link" href="mailto:poppunk@poppunk.net">Contact</a> | <a className="link" href="https://github.com/johnlees/PopPUNK-web/issues">Report issues</a>
               </ul>
             </div>
-          <p className="credits" style={{fontSize:(windowHeight*0.017975402 + "px")}}> PopPUNK-web was developed by Daniel Anderson, John Lees and Nicholas Croucher</p>
+          <p className="credits" style={{fontSize:(windowHeight*0.017975402 + "px")}}> PopPUNK-web was developed by <a href="https://github.com/Danderson123">Daniel Anderson</a>, <a href="http://johnlees.me/">John Lees</a> and <a href="https://www.imperial.ac.uk/people/n.croucher">Nicholas Croucher</a></p>
+          <p className="credits" style={{fontSize:(windowHeight*0.017975402 + "px")}}> With funding from:</p>
         </div>
+        <div className="funder-container" style={{height: (windowHeight*0.07 + "px"), width: windowWidth + "px"}}>
+            <div id="funder-font" className="funder-logos" style={{fontSize:(windowHeight*0.017975402 + "px")}}>
+              <img className="MF-logo" src={FunderLogo} alt="Funded by Mozilla, MRC and Wellcome"/>
+            </div>
+          </div>
       </>
     </main>
   );

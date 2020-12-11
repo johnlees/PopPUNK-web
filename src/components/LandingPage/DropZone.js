@@ -17,16 +17,16 @@ const DropZone = ({ onDrop, CanvasHeight }) => {
         <div className="description">
           <>
             <div className="description-text">
-              <p id="description-header-font" style={{fontSize:(CanvasHeight*0.020813623 + "px")}}> What is PopPUNK-web?</p>
-              <div id="description-font" style={{fontSize:(CanvasHeight*0.017975402 + "px")}}>PopPUNK-web is a genomic epidemiology tool designed to identify the species and strain of a pathogen sequence.</div>
+              <p id="description-header-font" style={{fontSize:(CanvasHeight*0.020813623 + "px")}}> What is PopPUNK?</p>
+              <div id="description-font" style={{fontSize:(CanvasHeight*0.017975402 + "px")}}><a href="https://github.com/johnlees/PopPUNK">PopPUNK</a> is a genomic epidemiology tool to determins the strain of a pathogen sequence using k-mers and machine learning techniques.</div>
             </div>
             <div className="description-text">
               <p id="description-header-font" style={{fontSize:(CanvasHeight*0.020813623 + "px")}}>Is PopPUNK-web secure?</p>
-              <div id="description-font" style={{fontSize:(CanvasHeight*0.017975402 + "px")}}>Sequences are sketched in-Browser and discarded after sketching.</div>
+              <div id="description-font" style={{fontSize:(CanvasHeight*0.017975402 + "px")}}>Sequences are <a href="https://github.com/johnlees/pp-sketchlib">sketched</a> in your browser, anonymising them. No genetic data is sent to us.</div>
             </div>
             <div className="description-text">
               <p id="description-header-font" style={{fontSize:(CanvasHeight*0.020813623 + "px")}}>What pathogens are supported?</p>
-              <div id="description-font" style={{fontSize:(CanvasHeight*0.017975402 + "px")}}>Streptococcus pneumoniae sequences are currently supported.</div>
+              <div id="description-font" style={{fontSize:(CanvasHeight*0.017975402 + "px")}}><em>Streptococcus pneumoniae</em> sequences are currently supported. This will be expanded soon.</div>
             </div>
           </>
         </div>

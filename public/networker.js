@@ -1,8 +1,8 @@
 onmessage = function(message) {
-    fetch("http://localhost:5000/network", {
+    fetch("https://poppunk-api.azurewebsites.net:80/network", {
             method: 'POST',
             mode: 'cors',
-            headers : { 
+            headers : {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
             },

@@ -151,4 +151,4 @@ function ChangeView(props) {
     );
 };
 
-export default ChangeView;
+export { ChangeView };

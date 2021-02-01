@@ -48,7 +48,7 @@ function App() {
       const species = "S.pneumoniae";
       sketchObj.species = species;
       setSketch(sketchObj)
-      fetch("https://poppunk-api.azurewebsites.net:80/upload", {
+      fetch("https://poppunk-api.azurewebsites.net:443/upload", {
         method: 'POST',
         mode: 'cors',
         headers : {

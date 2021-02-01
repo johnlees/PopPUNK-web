@@ -1,10 +1,9 @@
-import React, { useCallback, useState, useEffect } from "react";
+import React, { Suspense, useCallback, useState, useEffect } from "react";
 import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import DropZone from './components/LandingPage/DropZone';
 import Loading from './components/LoadingPage/Loading'
-import ChangeView from './components/ResultsPage/changeView'
 
 import PopPUNKLogo from './components/LandingPage/PopPUNKLogo.png';
 import FunderLogo from './components/LandingPage/funder_logos.png'
@@ -14,6 +13,8 @@ import './CSS/styles/LandingPage.css';
 import './CSS/styles/LoadingPage.css';
 import './CSS/styles/ResultsPage.css';
 import './CSS/Fonts.css';
+
+const ChangeView = React.lazy(() => import('./components/ResultsPage/changeView'));
 
 function App() {
 
@@ -83,7 +84,9 @@ return (
             <Loading progress = { progress } CanvasHeight={ windowHeight }/>
           </div> }
           { display &&
-          <ChangeView display = { display } sketch = { sketchResult } CanvasWidth={ windowWidth } CanvasHeight={ windowHeight }/>}
+          <Suspense fallback={<Loading progress = { "Loading results page..." } CanvasHeight={ windowHeight }/>}>
+            <ChangeView display = { display } sketch = { sketchResult } CanvasWidth={ windowWidth } CanvasHeight={ windowHeight }/>
+          </Suspense>}
           <p className="credits" style={{fontSize:(windowHeight*0.017975402 + "px")}}> PopPUNK-web was developed by <a href="https://github.com/Danderson123">Daniel Anderson</a>, <a href="http://johnlees.me/">John Lees</a> and <a href="https://www.imperial.ac.uk/people/n.croucher">Nicholas Croucher</a></p>
           <p className="credits" style={{fontSize:(windowHeight*0.017975402 + "px")}}> With funding from:</p>
         </div>

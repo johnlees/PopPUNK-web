@@ -1,4 +1,4 @@
-onmessage = function(message) {  
+onmessage = function(message) {
   var instance;
 
   WebSketch().then(module => {
@@ -8,7 +8,7 @@ onmessage = function(message) {
     const f = message.data[0];
 
     module.FS.mkdir('/working');
-    module.FS.mount(module.FS.filesystems.WORKERFS, { files: [f] }, '/working');
+    module.FS.h(module.FS.Ab.WORKERFS, { files: [f] }, '/working');
 
     const sketch = module.sketch('/working/' + f.name, 14, 29, 3, 14, 156, false, true)
 

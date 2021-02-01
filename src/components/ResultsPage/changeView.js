@@ -82,8 +82,13 @@ function ChangeView(props) {
     const resultContainer_class = (showMicroreact || showCytoscape || showPhylo) ? "extended-result-container" : "result-container"
     const displayContainer_class = (showMicroreact || showCytoscape || showPhylo) ? "extended-display-container" : "display-container"
 
+    const networkerPayload = {
+        species: props.sketch.species,
+        container_dir: props.display.container_dir
+    };
+
     if (count === 0) {
-        window.Worker[1].postMessage(props.sketch.species);
+        window.Worker[1].postMessage(networkerPayload);
         window.Worker[1].onmessage = function(NetEvent){
             if (networkLoading===true && recievedNetwork==null && (typeof NetEvent.data === "string")) {
                 const response = JSON.parse(NetEvent.data);
@@ -96,6 +101,7 @@ function ChangeView(props) {
             };
         };
     };
+
     return (
         <div className={resultContainer_class}>
             <Navbar className="custom-navbar" style={{height:((props.CanvasHeight*0.065)+"px")}}expand="lg">
@@ -151,4 +157,4 @@ function ChangeView(props) {
     );
 };
 
-export { ChangeView };
+export default ChangeView;

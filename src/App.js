@@ -83,8 +83,10 @@ return (
           <div className="content-container" style={{height: (windowHeight*0.6 + "px"), width: windowWidth + "px"}} >
             <Loading progress = { progress } CanvasHeight={ windowHeight }/>
           </div> }
-          { display && <Suspense fallback={<Loading progress = { progress } CanvasHeight={ windowHeight }/>}><ChangeView display = { display } sketch = { sketchResult } CanvasWidth={ windowWidth } CanvasHeight={ windowHeight }/></Suspense> }
-
+          { display &&
+          <Suspense fallback={<Loading progress = { progress } CanvasHeight={ windowHeight }/>}>
+            <ChangeView display = { display } sketch = { sketchResult } CanvasWidth={ windowWidth } CanvasHeight={ windowHeight }/>
+          </Suspense> }
           <p className="credits" style={{fontSize:(windowHeight*0.017975402 + "px")}}> PopPUNK-web was developed by <a href="https://github.com/Danderson123">Daniel Anderson</a>, <a href="http://johnlees.me/">John Lees</a> and <a href="https://www.imperial.ac.uk/people/n.croucher">Nicholas Croucher</a></p>
           <p className="credits" style={{fontSize:(windowHeight*0.017975402 + "px")}}> With funding from:</p>
         </div>

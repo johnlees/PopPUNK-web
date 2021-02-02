@@ -1,4 +1,4 @@
-import Plotly from 'plotly.js';
+import Plotly from 'plotly.js-basic-dist';
 import React from "react";
 
 class Plots extends React.Component{

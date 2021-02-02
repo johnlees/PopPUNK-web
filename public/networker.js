@@ -6,9 +6,9 @@ onmessage = function(message) {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
             },
-            body: JSON.stringify({species: message.data}),
+            body: JSON.stringify(message.data),
             }).then((response) => response.json()).then((responseJson) => {
         const networkResult = responseJson;
         self.postMessage(networkResult);
     });
-}
+};

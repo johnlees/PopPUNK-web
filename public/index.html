@@ -25,10 +25,9 @@
     -->
   </body>
   <script type="text/javascript">
-
+  
     const worker = new Worker("./worker.js");
-    const networker = new Worker("./networker.js");
+    window.Worker = [worker];
 
-    window.Worker = [worker,networker];
   </script>
 </html>

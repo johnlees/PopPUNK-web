@@ -18,7 +18,7 @@ const DropZone = ({ onDrop, CanvasHeight }) => {
           <>
             <div className="description-text">
               <p id="description-header-font" style={{fontSize:(CanvasHeight*0.020813623 + "px")}}> What is PopPUNK?</p>
-              <div id="description-font" style={{fontSize:(CanvasHeight*0.017975402 + "px")}}><a href="https://github.com/johnlees/PopPUNK">PopPUNK</a> is a genomic epidemiology tool to determins the strain of a pathogen sequence using k-mers and machine learning techniques.</div>
+              <div id="description-font" style={{fontSize:(CanvasHeight*0.017975402 + "px")}}><a href="https://github.com/johnlees/PopPUNK">PopPUNK</a> is a genomic epidemiology tool to determine the strain of a pathogen sequence using k-mers and machine learning techniques.</div>
             </div>
             <div className="description-text">
               <p id="description-header-font" style={{fontSize:(CanvasHeight*0.020813623 + "px")}}>Is PopPUNK-web secure?</p>

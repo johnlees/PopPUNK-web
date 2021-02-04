@@ -6,7 +6,6 @@ import Network from './Network'
 import Microreact from './Microreact'
 import Plots from './Plots'
 import Stats from './Statistics'
-import Loading from '../LoadingPage/Loading'
 import Tree from './Phylocanvas'
 
 import DarkStatsIcon from './icons/noun_text_dark.png'
@@ -20,8 +19,6 @@ import LightTreeIcon from './icons/noun_Binary tree_light.png'
 import DarkNetworkIcon from './icons/noun_Network_dark.png'
 import LightNetworkIcon from './icons/noun_Network_light.png'
 
-let count = 0
-
 function ChangeView(props) {
 
     const [showStats, setShowStats] = useState(true)
@@ -29,9 +26,6 @@ function ChangeView(props) {
     const [showMicroreact, setShowMicroreact] = useState(false)
     const [showPhylo, setShowPhylo] = useState(false)
     const [showCytoscape, setShowCytoscape] = useState(false)
-    const [networkLoading, setNetworkLoading] = useState(true)
-    const [recievedNetwork, setNetwork] = useState(null)
-    const [recievedPhylogeny, setPhylogeny] = useState(null)
 
     const onStats = () => {
         setShowStats(true)
@@ -82,26 +76,6 @@ function ChangeView(props) {
     const resultContainer_class = (showMicroreact || showCytoscape || showPhylo) ? "extended-result-container" : "result-container"
     const displayContainer_class = (showMicroreact || showCytoscape || showPhylo) ? "extended-display-container" : "display-container"
 
-    const networkerPayload = {
-        species: props.sketch.species,
-        container_dir: props.display.container_dir
-    };
-
-    if (count === 0) {
-        window.Worker[1].postMessage(networkerPayload);
-        count += 1
-    }
-    window.Worker[1].onmessage = function(NetEvent){
-        if (networkLoading===true && recievedNetwork==null && (typeof NetEvent.data === "string")) {
-            const response = JSON.parse(NetEvent.data);
-            if (typeof response.phylogeny === "string") {
-                setNetwork(response.network);
-                setPhylogeny(response.phylogeny);
-                setNetworkLoading(false);
-            };
-        };
-    };
-
     return (
         <div className={resultContainer_class}>
             <Navbar className="custom-navbar" style={{height:((props.CanvasHeight*0.065)+"px")}}expand="lg">
@@ -143,13 +117,11 @@ function ChangeView(props) {
                         <Microreact URL={ props.display.microreactUrl } />
                     </div>
                     <div className={phylo_class} style={{ height: props.CanvasHeight*0.9}}>
-                        { (networkLoading === true) && <Loading progress = "Fetching Cluster Phylogeny..."/> }
-                        { (networkLoading === false && showPhylo === true && recievedPhylogeny !== "A tree cannot be built with fewer than 3 samples.") && <Tree phylogeny = { recievedPhylogeny } />}
-                        { (networkLoading === false && showPhylo === true && recievedPhylogeny === "A tree cannot be built with fewer than 3 samples.") && <div className="text-center" style={{fontSize:(props.CanvasHeight*0.028382214 + "px")}}>{ recievedPhylogeny }</div>}
+                        { (showPhylo === true && props.display.phylogeny !== "A tree cannot be built with fewer than 3 samples.") && <Tree phylogeny = { props.display.phylogeny } />}
+                        { (showPhylo === true && props.display.phylogeny === "A tree cannot be built with fewer than 3 samples.") && <div className="text-center" style={{fontSize:(props.CanvasHeight*0.028382214 + "px")}}>{ props.display.phylogeny }</div>}
                     </div>
                     <div className={cytoscape_class} style={{ height: props.CanvasHeight*0.9}}>
-                        { (networkLoading === true) && <Loading progress = "Fetching Network..."/> }
-                        { (networkLoading === false) && <Network network = { recievedNetwork }/> }
+                        <Network network = { props.display.network }/>
                     </div>
                 </>
             </div>

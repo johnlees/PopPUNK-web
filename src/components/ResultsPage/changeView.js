@@ -89,15 +89,15 @@ function ChangeView(props) {
 
     if (count === 0) {
         window.Worker[1].postMessage(networkerPayload);
-        window.Worker[1].onmessage = function(NetEvent){
-            if (networkLoading===true && recievedNetwork==null && (typeof NetEvent.data === "string")) {
-                const response = JSON.parse(NetEvent.data);
-                if (typeof response.phylogeny === "string") {
-                    setNetwork(response.network);
-                    setPhylogeny(response.phylogeny);
-                    setNetworkLoading(false);
-                    count += 1
-                };
+        count += 1
+    }
+    window.Worker[1].onmessage = function(NetEvent){
+        if (networkLoading===true && recievedNetwork==null && (typeof NetEvent.data === "string")) {
+            const response = JSON.parse(NetEvent.data);
+            if (typeof response.phylogeny === "string") {
+                setNetwork(response.network);
+                setPhylogeny(response.phylogeny);
+                setNetworkLoading(false);
             };
         };
     };
